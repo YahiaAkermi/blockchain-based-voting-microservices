@@ -16,3 +16,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+geolocation:
+  api:
+    url: http://ip-api.com/json

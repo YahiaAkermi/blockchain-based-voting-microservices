@@ -4,16 +4,20 @@ import com.yahia.vmms.dto.VotingSessionDto;
 
 import com.yahia.vmms.dto.VotingSessionDtoWithId;
 import com.yahia.vmms.entity.VotingSessions;
+import com.yahia.vmms.entity.enums.Visibility;
 import com.yahia.vmms.exception.DateTimeIncohrentException;
 import com.yahia.vmms.exception.VotingSessionAlreadyExists;
 import com.yahia.vmms.mapper.VotingSessionMapper;
 import com.yahia.vmms.repository.CondidateRepository;
 import com.yahia.vmms.repository.VotingSessionsRepository;
 import com.yahia.vmms.service.IVotingSessionService;
+import com.yahia.vmms.service.geolocation.dto.GeoResponse;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,14 +25,33 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service @AllArgsConstructor
+@Service
 public class VotingSessionServiceImpl implements IVotingSessionService {
     private static final Logger logger = LoggerFactory.getLogger(IVotingSessionService.class);
 
+    //injecting our repos along with restTemplate to make a call to another 3rd party API
+    public VotingSessionServiceImpl(VotingSessionsRepository votingSessionsRepository
+            ,CondidateRepository condidateRepository,RestTemplate restTemplate) {
+        this.restTemplate=restTemplate;
+        this.votingSessionsRepository=votingSessionsRepository;
+        this.condidateRepository=condidateRepository;
 
+    }
 
     private final VotingSessionsRepository votingSessionsRepository;
     private final CondidateRepository condidateRepository;
+
+    @Value("${geolocation.api.url}") //you find it inside application.properties
+    private String geolocationAPI;
+
+    private final RestTemplate restTemplate;
+
+
+    //this is to get the country after making api call
+    public GeoResponse getRegionByAPI(String ipAddress){
+        String apiUrl=String.format("%s/%s",geolocationAPI,ipAddress);
+        return restTemplate.getForObject(apiUrl, GeoResponse.class);
+    }
 
     /**
      * this method will create voting session
@@ -89,10 +112,32 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
     @Override
     public ArrayList<VotingSessionDtoWithId> fetchAuthorizedVotingSession(String clientIpAddress) {
 
-        logger.warn("client ip address ----> "+clientIpAddress);
+        logger.warn("client ip address ----> " + clientIpAddress);
 
-        return new ArrayList<>();
+        //here i'm simulating having ip address since i'm in localhost and testing so it's not convenient to use loopback address for
+        //testing this geolocation functionality
+        GeoResponse location = getRegionByAPI("24.48.0.1");
+
+        logger.info("country :{ " + location.getCountryCode() + " , " + location.getCity() + " }");
+
+        ArrayList<VotingSessions> listAuthorizedVotingSessions = (ArrayList<VotingSessions>)
+                votingSessionsRepository.findAllByAllowedRegionsContainingOrVisibilityEquals(location.getCountryCode(), Visibility.PUBLIC);
+
+       return listAuthorizedVotingSessions.stream().map(votingSessions -> {
+
+            //first i'm gonna map from voting session to dto with id
+            VotingSessionDtoWithId votingSessionDtoWithId =
+                    VotingSessionMapper.mapToVotingSessionWithId(votingSessions, new VotingSessionDtoWithId());
+
+            //then i will set the dto after mapping it from voting session
+            votingSessionDtoWithId.setVotingSessionDto(VotingSessionMapper.mapToVotingSessionDto(votingSessions, new VotingSessionDto()));
+
+            return votingSessionDtoWithId;
+        }).collect(Collectors.toCollection(ArrayList::new));
+
+
     }
+
 
 
     /**

@@ -34,10 +34,10 @@ public class VmController {
     }
 
     @GetMapping("/fetch-authorized-voting-sessions")
-    public ResponseEntity<ResponseDto> fetchAllVotingSession(HttpServletRequest request){
+    public ResponseEntity<ArrayList< VotingSessionDtoWithId>> fetchAllVotingSession(HttpServletRequest request){
 
         //this is another to do it
-         //String clientIP=request.getRemoteAddr();
+        //String clientIP=request.getRemoteAddr();
 
         //i'm using the header of the request so i can easily get the ipv6 address behind loadbalancer of proxy
         String clientIP = request.getHeader("X-Forwarded-For");
@@ -45,10 +45,11 @@ public class VmController {
             clientIP = request.getRemoteAddr();
         }
 
-        iVotingSessionService.fetchAuthorizedVotingSession(clientIP);
+   ArrayList<VotingSessionDtoWithId> authorizedVotingSessions=   iVotingSessionService.fetchAuthorizedVotingSession(clientIP);
 
 
-      return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto("200","cient ip address logged successfully"));
+      return ResponseEntity.status(HttpStatus.OK)
+              .body(authorizedVotingSessions);
     }
 
     @GetMapping("/fetch-by-title")
