@@ -5,6 +5,8 @@ import com.yahia.vmms.constants.VotingSessionConstants;
 import com.yahia.vmms.dto.VotingSessionDto;
 import com.yahia.vmms.dto.VotingSessionDtoWithId;
 import com.yahia.vmms.dto.responseStructureDTOs.ResponseDto;
+import com.yahia.vmms.entity.enums.Visibility;
+import com.yahia.vmms.entity.enums.VotingStatus;
 import com.yahia.vmms.service.IVotingSessionService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
@@ -59,5 +61,19 @@ public class VmController {
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body(filteredVotingSessionBytitle);
+    }
+
+
+    @GetMapping("/fetch-by-status")
+    public ResponseEntity<ArrayList< VotingSessionDtoWithId>> filterByVotingSessionStatus(@RequestParam VotingStatus sessionStatus, HttpServletRequest request){
+
+        String clientIP = request.getHeader("X-Forwarded-For");
+        if (clientIP == null || clientIP.isEmpty()) {
+            clientIP = request.getRemoteAddr();
+        }
+
+       ArrayList<VotingSessionDtoWithId>  votingSessionfilteredByStatus= iVotingSessionService.filterVotingSessionByStatus(sessionStatus,clientIP);
+
+        return ResponseEntity.status(HttpStatus.OK).body(votingSessionfilteredByStatus);
     }
 }

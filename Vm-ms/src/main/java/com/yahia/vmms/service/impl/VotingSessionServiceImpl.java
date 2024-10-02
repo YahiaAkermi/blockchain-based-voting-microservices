@@ -5,6 +5,7 @@ import com.yahia.vmms.dto.VotingSessionDto;
 import com.yahia.vmms.dto.VotingSessionDtoWithId;
 import com.yahia.vmms.entity.VotingSessions;
 import com.yahia.vmms.entity.enums.Visibility;
+import com.yahia.vmms.entity.enums.VotingStatus;
 import com.yahia.vmms.exception.DateTimeIncohrentException;
 import com.yahia.vmms.exception.VotingSessionAlreadyExists;
 import com.yahia.vmms.mapper.VotingSessionMapper;
@@ -148,8 +149,6 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
     @Override
     public ArrayList<VotingSessionDtoWithId> filterVotingSessionBytitle(Long sessionAdminId, String searchTerm) {
 
-        //1.check if the admin exists in keycloack server then move to 2nd step
-
         //2.retrieve the voting sessions for that particular admin filtered by searchTerm
         Collection<VotingSessions> listRetrievedVotingSessions=votingSessionsRepository
                 .findAllBySessionAdminIdAndTitleContainingIgnoreCase(sessionAdminId, searchTerm);
@@ -168,5 +167,36 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
           return votingSessionDtoWithId;
         }).collect(Collectors.toCollection(ArrayList::new));
 
+    }
+
+    /**
+     * this method will filter voting sessions by status for only public or authorized regions
+     * @param sessionStatus -  String
+     * @param clientIpAddress -String
+     */
+    @Override
+    public ArrayList<VotingSessionDtoWithId> filterVotingSessionByStatus(VotingStatus sessionStatus, String clientIpAddress) {
+
+        logger.warn("client ip address ----> " + clientIpAddress);
+
+        //here i'm simulating having ip address since i'm in localhost and testing so it's not convenient to use loopback address for
+        //testing this geolocation functionality
+        GeoResponse location = getRegionByAPI("24.48.0.1");
+
+        logger.info("country :{ " + location.getCountryCode() + " , " + location.getCity() + " }");
+
+        ArrayList<VotingSessions> listAuthorizedVotingSessionsfilteredByStatus = (ArrayList<VotingSessions>)
+                votingSessionsRepository.findAllByVotingStatusEqualsAndAllowedRegionsContainingOrVisibilityEquals(sessionStatus,location.getCountryCode(), Visibility.PUBLIC);
+
+
+
+
+        return listAuthorizedVotingSessionsfilteredByStatus.stream().map(votingSessions -> {
+            VotingSessionDtoWithId votingSessionDtoWithId=VotingSessionMapper.mapToVotingSessionWithId(votingSessions,new VotingSessionDtoWithId());
+
+            votingSessionDtoWithId.setVotingSessionDto(VotingSessionMapper.mapToVotingSessionDto(votingSessions,new VotingSessionDto()));
+
+            return votingSessionDtoWithId;
+        }).collect(Collectors.toCollection(ArrayList::new));
     }
 }

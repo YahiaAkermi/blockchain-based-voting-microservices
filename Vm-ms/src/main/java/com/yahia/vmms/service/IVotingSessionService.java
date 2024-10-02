@@ -3,6 +3,8 @@ package com.yahia.vmms.service;
 import com.yahia.vmms.dto.VotingSessionDto;
 import com.yahia.vmms.dto.VotingSessionDtoWithId;
 import com.yahia.vmms.entity.VotingSessions;
+import com.yahia.vmms.entity.enums.Visibility;
+import com.yahia.vmms.entity.enums.VotingStatus;
 
 import java.util.ArrayList;
 
@@ -27,4 +29,11 @@ public interface IVotingSessionService {
      * @param searchTerm -  String
      */
     ArrayList<VotingSessionDtoWithId> filterVotingSessionBytitle(Long sessionAdminId, String searchTerm);
+
+    /**
+     *this method will filter voting sessions by status for only public or authorized regions
+     * @param sessionStatus -  String
+     *@param clientIp -String
+     */
+    ArrayList<VotingSessionDtoWithId> filterVotingSessionByStatus(VotingStatus sessionStatus, String clientIp);
 }
