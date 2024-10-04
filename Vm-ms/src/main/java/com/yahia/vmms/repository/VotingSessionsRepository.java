@@ -7,11 +7,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.Optional;
 
 
 @Repository
 public interface VotingSessionsRepository extends JpaRepository<VotingSessions,Long> {
 
+
+    @Override
+    Optional<VotingSessions> findById(Long votingSessionId);
 
     boolean existsByTitleIgnoreCase(String title);
 

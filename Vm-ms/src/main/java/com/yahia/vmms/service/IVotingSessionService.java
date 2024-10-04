@@ -36,4 +36,10 @@ public interface IVotingSessionService {
      *@param clientIp -String
      */
     ArrayList<VotingSessionDtoWithId> filterVotingSessionByStatus(VotingStatus sessionStatus, String clientIp);
+
+    /**
+     *this method will retrieve a particular voting session
+     * @param votingSessionId -  Long
+     */
+    VotingSessionDtoWithId fetchVotingSessionById(Long votingSessionId);
 }

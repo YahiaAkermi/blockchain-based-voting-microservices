@@ -76,4 +76,13 @@ public class VmController {
 
         return ResponseEntity.status(HttpStatus.OK).body(votingSessionfilteredByStatus);
     }
+
+    @GetMapping("/fetch-by-id")
+    public ResponseEntity< VotingSessionDtoWithId> fetchById(@RequestParam Long votingSessionId){
+
+
+        VotingSessionDtoWithId votingSessionDtoWithId=iVotingSessionService.fetchVotingSessionById(votingSessionId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(votingSessionDtoWithId);
+    }
 }

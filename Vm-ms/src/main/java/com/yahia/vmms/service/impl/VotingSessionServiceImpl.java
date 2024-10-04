@@ -7,6 +7,7 @@ import com.yahia.vmms.entity.VotingSessions;
 import com.yahia.vmms.entity.enums.Visibility;
 import com.yahia.vmms.entity.enums.VotingStatus;
 import com.yahia.vmms.exception.DateTimeIncohrentException;
+import com.yahia.vmms.exception.RessourceNotFoundException;
 import com.yahia.vmms.exception.VotingSessionAlreadyExists;
 import com.yahia.vmms.mapper.VotingSessionMapper;
 import com.yahia.vmms.repository.CondidateRepository;
@@ -24,6 +25,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -198,5 +200,24 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
 
             return votingSessionDtoWithId;
         }).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    /**
+     * this method will retrieve a particular voting session
+     *
+     * @param votingSessionId -  Long
+     */
+    @Override
+    public VotingSessionDtoWithId fetchVotingSessionById(Long votingSessionId) {
+
+        //we're retrieving the voting session if it doesn't exist we return resource not found exception
+        VotingSessions retrievedVotingSession= votingSessionsRepository.findById(votingSessionId)
+                .orElseThrow(() -> new RessourceNotFoundException("Voting Session", "voting session ID", votingSessionId.toString()));
+
+        //transforming it to dto with id
+        VotingSessionDtoWithId votingSessionDtoWithId=VotingSessionMapper.mapToVotingSessionWithId(retrievedVotingSession,new VotingSessionDtoWithId());
+        votingSessionDtoWithId.setVotingSessionDto(VotingSessionMapper.mapToVotingSessionDto(retrievedVotingSession,new VotingSessionDto()));
+
+        return votingSessionDtoWithId;
     }
 }
