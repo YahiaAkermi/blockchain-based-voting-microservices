@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(VotingSessionAlreadyExists.class)
-    public ResponseEntity<ErrorResponseDto> handleVotingSessionAlreadyExistsException(VotingSessionAlreadyExists exception, WebRequest webRequest){
+    @ExceptionHandler(ResourceAlreadyExists.class)
+    public ResponseEntity<ErrorResponseDto> handleResourceAlreadyExistsException(ResourceAlreadyExists exception, WebRequest webRequest){
         ErrorResponseDto errorResponseDto=new
                 ErrorResponseDto(webRequest.getDescription(false), HttpStatus.BAD_REQUEST,exception.getMessage()
                 , LocalDateTime.now());
@@ -35,6 +35,18 @@ public class GlobalExceptionHandler {
         ErrorResponseDto errorResponseDto=new ErrorResponseDto(
                 request.getDescription(false),
                 HttpStatus.NOT_FOUND,
+                exception.getMessage(),
+                LocalDateTime.now()
+        );
+
+        return new ResponseEntity<>(errorResponseDto,HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BelowAgeOfConscentException.class)
+    public ResponseEntity<ErrorResponseDto> handleBelowAgeOfConscentException(BelowAgeOfConscentException exception,WebRequest request){
+        ErrorResponseDto errorResponseDto=new ErrorResponseDto(
+                request.getDescription(false),
+                HttpStatus.BAD_REQUEST,
                 exception.getMessage(),
                 LocalDateTime.now()
         );

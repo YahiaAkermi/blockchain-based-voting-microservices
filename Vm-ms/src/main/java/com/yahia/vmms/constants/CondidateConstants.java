@@ -1,13 +1,11 @@
 package com.yahia.vmms.constants;
 
+public final class CondidateConstants {
 
-
-public final class VotingSessionConstants {
-    private VotingSessionConstants(){}
-
+    private CondidateConstants(){}
 
     public static final String STATUS_201 = "201";
-    public static final String MESSAGE_201 = "voting session created successfully";
+    public static final String MESSAGE_201 = "Candidate created successfully";
     public static final String STATUS_200 = "200";
     public static final String MESSAGE_200 = "Request processed successfully";
     public static final String STATUS_417 = "417";
@@ -16,5 +14,4 @@ public final class VotingSessionConstants {
     public static final String STATUS_500 = "500";
     public static final String MESSAGE_500 = "An error occurred. Please try again or contact Dev team";
 
-    public static final Integer AGE_OF_CONSCENT=18;
 }

@@ -4,7 +4,9 @@ import com.yahia.vmms.entity.enums.ApplicationStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @ToString @Getter @Setter @NoArgsConstructor @AllArgsConstructor
@@ -18,18 +20,20 @@ public class Condidate extends BaseEntity{
 
     private String email;
 
-
-    private String party;
-
-    private  String programmeFileUrl;
-
-    @Enumerated(EnumType.STRING)
-    private ApplicationStatus applicationStatus;
+    @Temporal(TemporalType.DATE)
+    private LocalDate dateOfBirth;
 
 
-    @ManyToOne
-    @JoinColumn(name = "votingSessionId")
-    private VotingSessions votingSession;
+//    private String party;
+
+//    private  String programmeFileUrl;
+
+//    @Enumerated(EnumType.STRING)
+//    private ApplicationStatus applicationStatus;
+
+
+    @OneToMany(mappedBy = "applicationId.condidate")
+    private Collection<SessionApplication> listApplications;
 
 
 

@@ -8,13 +8,12 @@ import com.yahia.vmms.entity.enums.Visibility;
 import com.yahia.vmms.entity.enums.VotingStatus;
 import com.yahia.vmms.exception.DateTimeIncohrentException;
 import com.yahia.vmms.exception.RessourceNotFoundException;
-import com.yahia.vmms.exception.VotingSessionAlreadyExists;
+import com.yahia.vmms.exception.ResourceAlreadyExists;
 import com.yahia.vmms.mapper.VotingSessionMapper;
 import com.yahia.vmms.repository.CondidateRepository;
 import com.yahia.vmms.repository.VotingSessionsRepository;
 import com.yahia.vmms.service.IVotingSessionService;
 import com.yahia.vmms.service.geolocation.dto.GeoResponse;
-import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,8 +23,6 @@ import org.springframework.web.client.RestTemplate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -66,7 +63,7 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
 
         //first I am going to check if the voting session already exists
         if(votingSessionsRepository.existsByTitleIgnoreCase(votingSessionDto.getTitle())){
-         throw  new VotingSessionAlreadyExists("Voting session already exists with the given title : "+votingSessionDto.getTitle());
+         throw  new ResourceAlreadyExists("Votin Session", votingSessionDto.getTitle());
         }
 
         //map voting session dto to voting session ,so we can store it in the db

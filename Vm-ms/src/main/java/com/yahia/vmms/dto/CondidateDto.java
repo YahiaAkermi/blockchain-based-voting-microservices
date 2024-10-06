@@ -3,6 +3,9 @@ package com.yahia.vmms.dto;
 import com.yahia.vmms.entity.enums.ApplicationStatus;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Data
 public class CondidateDto {
 
@@ -10,9 +13,6 @@ public class CondidateDto {
 
     private String email;
 
-    private String party;
 
-    private  String programmeFileUrl;
-
-    private ApplicationStatus applicationStatus;
+    private LocalDate dateOfBirth;
 }

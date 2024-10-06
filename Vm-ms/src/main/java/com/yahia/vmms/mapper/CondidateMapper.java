@@ -8,9 +8,8 @@ public class CondidateMapper {
     public static Condidate mapToCondidate(CondidateDto condidateDto,Condidate condidate){
         condidate.setName(condidateDto.getName());
         condidate.setEmail(condidateDto.getEmail());
-        condidate.setParty(condidateDto.getParty());
-        condidate.setProgrammeFileUrl(condidateDto.getProgrammeFileUrl());
-        condidate.setApplicationStatus(condidateDto.getApplicationStatus());
+        condidate.setDateOfBirth(condidateDto.getDateOfBirth());
+
 
         return condidate;
     }
@@ -18,9 +17,7 @@ public class CondidateMapper {
     public static CondidateDto mapToCondidateDto(Condidate condidate,CondidateDto condidateDto){
         condidateDto.setName(condidate.getName());
         condidateDto.setEmail(condidate.getEmail());
-        condidateDto.setParty(condidate.getParty());
-        condidateDto.setProgrammeFileUrl(condidate.getProgrammeFileUrl());
-        condidateDto.setApplicationStatus(condidate.getApplicationStatus());
+        condidateDto.setDateOfBirth(condidate.getDateOfBirth());
 
         return condidateDto;
     }

@@ -33,6 +33,7 @@ public class VotingSessions extends BaseEntity{
     private Long sessionAdminId;
 
 
-    @OneToMany(mappedBy = "votingSession")
-    private Collection<Condidate> condidates;
+
+    @OneToMany(mappedBy = "applicationId.votingSession")
+    private Collection<SessionApplication> listApplications;
 }
