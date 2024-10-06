@@ -1,6 +1,8 @@
 package com.yahia.vmms.mapper;
 
 import com.yahia.vmms.dto.CondidateDto;
+import com.yahia.vmms.dto.CondidateDtoWithId;
+import com.yahia.vmms.dto.VotingSessionDtoWithId;
 import com.yahia.vmms.entity.Condidate;
 
 public class CondidateMapper {
@@ -21,4 +23,13 @@ public class CondidateMapper {
 
         return condidateDto;
     }
+
+    public static CondidateDtoWithId mapFromCondidateToDtoWithId(Condidate condidate,CondidateDtoWithId condidateDtoWithId){
+        condidateDtoWithId.setCondidateId(condidate.getCondidateId());
+
+        //i have to set the condidateDto where i shall use this mapper function
+
+        return condidateDtoWithId;
+    }
+
 }
