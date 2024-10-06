@@ -85,4 +85,34 @@ public class VmController {
 
         return ResponseEntity.status(HttpStatus.OK).body(votingSessionDtoWithId);
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<ResponseDto> updateVotingSession(@RequestBody VotingSessionDtoWithId votingSessionDtoWithId){
+
+         boolean isUpdated= iVotingSessionService.updateVotingSession(votingSessionDtoWithId);
+
+         if (isUpdated){
+             return  ResponseEntity.status(HttpStatus.OK)
+                     .body(new ResponseDto(VotingSessionConstants.STATUS_200,VotingSessionConstants.MESSAGE_200));
+         }else{
+             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                     .body(new ResponseDto(VotingSessionConstants.STATUS_417,VotingSessionConstants.MESSAGE_417_UPDATE));
+         }
+
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<ResponseDto> deleteVotingSession(@RequestParam Long sessionId){
+
+        boolean isDeleted= iVotingSessionService.deleteVotingSession(sessionId);
+
+        if (isDeleted){
+            return  ResponseEntity.status(HttpStatus.OK)
+                    .body(new ResponseDto(VotingSessionConstants.STATUS_200,VotingSessionConstants.MESSAGE_200));
+        }else{
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ResponseDto(VotingSessionConstants.STATUS_417,VotingSessionConstants.MESSAGE_417_DELETE));
+        }
+
+    }
 }

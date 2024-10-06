@@ -3,6 +3,7 @@ package com.yahia.vmms.mapper;
 import com.yahia.vmms.dto.VotingSessionDto;
 import com.yahia.vmms.dto.VotingSessionDtoWithId;
 import com.yahia.vmms.entity.VotingSessions;
+import com.yahia.vmms.entity.enums.Visibility;
 
 public class VotingSessionMapper {
 
@@ -37,6 +38,28 @@ public class VotingSessionMapper {
         //for votingSessionDto I need to set it where I use this map function
 
         return votingSessionDtoWithId;
+
+    }
+
+    public static VotingSessions mapFromDtoWithIdToVotingSession(VotingSessionDtoWithId votingSessionDtoWithId,VotingSessions votingSession){
+
+        //that's what can the session admin modify
+        votingSession.setStartDate(votingSessionDtoWithId.getVotingSessionDto().getStartDate());
+        votingSession.setEndDate(votingSessionDtoWithId.getVotingSessionDto().getEndDate());
+        votingSession.setVotingStatus(votingSessionDtoWithId.getVotingSessionDto().getVotingStatus());
+        votingSession.setVisibility(votingSessionDtoWithId.getVotingSessionDto().getVisibility());
+
+
+        if(votingSessionDtoWithId.getVotingSessionDto().getVisibility().compareTo(Visibility.RESTRICTED) == 0){
+            votingSession.setAllowedRegions(votingSessionDtoWithId.getVotingSessionDto().getAllowedRegions());
+        }else {
+            votingSession.setAllowedRegions(null);
+        }
+
+
+        //for votingSessionDto I need to set it where I use this map function
+
+        return votingSession;
 
     }
 

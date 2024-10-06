@@ -24,4 +24,7 @@ public interface VotingSessionsRepository extends JpaRepository<VotingSessions,L
     Collection<VotingSessions> findAllByAllowedRegionsContainingOrVisibilityEquals(String clientCountryCode, Visibility visibility );
 
     Collection<VotingSessions> findAllByVotingStatusEqualsAndAllowedRegionsContainingOrVisibilityEquals( VotingStatus votingStatus ,String clientCountryCode, Visibility visibility);
- }
+
+    void deleteById(Long votingSessionId);
+
+}

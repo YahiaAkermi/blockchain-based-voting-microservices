@@ -42,4 +42,16 @@ public interface IVotingSessionService {
      * @param votingSessionId -  Long
      */
     VotingSessionDtoWithId fetchVotingSessionById(Long votingSessionId);
+
+    /**
+     *this method will update particular Voting session
+     * @param votingSessionDtoWithId -  VotingSessionDtoWithId
+     */
+    boolean updateVotingSession(VotingSessionDtoWithId votingSessionDtoWithId);
+
+    /**
+     *this method will delete particular Voting session
+     * @param votingSessionId -  Long
+     */
+    boolean deleteVotingSession(Long votingSessionId);
 }

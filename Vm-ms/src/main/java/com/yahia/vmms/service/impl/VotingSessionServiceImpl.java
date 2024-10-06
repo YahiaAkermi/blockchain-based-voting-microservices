@@ -220,4 +220,47 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
 
         return votingSessionDtoWithId;
     }
+
+    /**
+     * this method will update particular Voting session
+     *
+     * @param votingSessionDtoWithId -  VotingSessionDtoWithId
+     */
+    @Override
+    public boolean updateVotingSession(VotingSessionDtoWithId votingSessionDtoWithId) {
+
+        VotingSessions votingSession=votingSessionsRepository.findById(votingSessionDtoWithId.getVotingSessionId()).orElseThrow(
+                () -> new RessourceNotFoundException("Voting Session","votingSession ID",votingSessionDtoWithId.getVotingSessionId().toString())
+        );
+
+        //checking if the new start data is superior to the current local date time as it should
+        if (votingSessionDtoWithId.getVotingSessionDto().getStartDate().isBefore(LocalDateTime.now())){
+            throw  new DateTimeIncohrentException("session start date should be after session update request");
+        }
+
+
+        //finally storing the updates in the db
+
+        votingSessionsRepository.save(VotingSessionMapper.mapFromDtoWithIdToVotingSession(votingSessionDtoWithId,votingSession));
+
+        return true;
+    }
+
+    /**
+     * this method will delete particular Voting session
+     *
+     * @param votingSessionId -  Long
+     */
+    @Override
+    public boolean deleteVotingSession(Long votingSessionId) {
+
+        VotingSessions votingSession=votingSessionsRepository.findById(votingSessionId).orElseThrow(
+                ()-> new RessourceNotFoundException("Voting Session","voting session ID",votingSessionId.toString())
+        );
+
+        votingSessionsRepository.deleteById(votingSessionId);
+
+
+        return true;
+    }
 }
