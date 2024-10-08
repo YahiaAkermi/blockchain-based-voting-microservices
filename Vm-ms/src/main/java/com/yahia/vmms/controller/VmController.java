@@ -9,10 +9,14 @@ import com.yahia.vmms.entity.enums.Visibility;
 import com.yahia.vmms.entity.enums.VotingStatus;
 import com.yahia.vmms.service.IVotingSessionService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
@@ -21,12 +25,13 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping(path = "/voting-managment")
 @AllArgsConstructor
+@Validated
 public class VmController {
 
     private IVotingSessionService iVotingSessionService;
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createVotingSession(@RequestBody VotingSessionDto votingSessionDto){
+    public ResponseEntity<ResponseDto> createVotingSession(@Valid @RequestBody VotingSessionDto votingSessionDto){
 
         iVotingSessionService.createVotingSession(votingSessionDto);
 
@@ -55,7 +60,9 @@ public class VmController {
     }
 
     @GetMapping("/fetch-by-title")
-    public ResponseEntity<ArrayList< VotingSessionDtoWithId>> filterByTitle(@RequestParam Long adminSessionId, @RequestParam String title){
+    public ResponseEntity<ArrayList< VotingSessionDtoWithId>> filterByTitle(
+            @NotNull(message = "adminSessionId should not be empty") @RequestParam Long adminSessionId,
+            @NotEmpty(message = "title should not be empty") @RequestParam String title){
 
         ArrayList< VotingSessionDtoWithId>  filteredVotingSessionBytitle=  iVotingSessionService.filterVotingSessionBytitle(adminSessionId,title);
 
@@ -65,7 +72,9 @@ public class VmController {
 
 
     @GetMapping("/fetch-by-status")
-    public ResponseEntity<ArrayList< VotingSessionDtoWithId>> filterByVotingSessionStatus(@RequestParam VotingStatus sessionStatus, HttpServletRequest request){
+    public ResponseEntity<ArrayList< VotingSessionDtoWithId>> filterByVotingSessionStatus(
+             @RequestParam VotingStatus sessionStatus
+            , HttpServletRequest request){
 
         String clientIP = request.getHeader("X-Forwarded-For");
         if (clientIP == null || clientIP.isEmpty()) {
@@ -78,7 +87,8 @@ public class VmController {
     }
 
     @GetMapping("/fetch-by-id")
-    public ResponseEntity< VotingSessionDtoWithId> fetchById(@RequestParam Long votingSessionId){
+    public ResponseEntity< VotingSessionDtoWithId> fetchById(
+            @NotEmpty(message = "votingSessionId should not be empty") @RequestParam Long votingSessionId){
 
 
         VotingSessionDtoWithId votingSessionDtoWithId=iVotingSessionService.fetchVotingSessionById(votingSessionId);
@@ -87,7 +97,7 @@ public class VmController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<ResponseDto> updateVotingSession(@RequestBody VotingSessionDtoWithId votingSessionDtoWithId){
+    public ResponseEntity<ResponseDto> updateVotingSession(@Valid @RequestBody VotingSessionDtoWithId votingSessionDtoWithId){
 
          boolean isUpdated= iVotingSessionService.updateVotingSession(votingSessionDtoWithId);
 
@@ -102,7 +112,9 @@ public class VmController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteVotingSession(@RequestParam Long sessionId){
+    public ResponseEntity<ResponseDto> deleteVotingSession(
+            @NotNull(message = "sessionId should not be null")
+            @RequestParam Long sessionId){
 
         boolean isDeleted= iVotingSessionService.deleteVotingSession(sessionId);
 
