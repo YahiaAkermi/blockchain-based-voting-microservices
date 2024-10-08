@@ -6,9 +6,11 @@ import lombok.Data;
 @Data
 public class SessionApplicationDto {
 
-    private Long condidateId;
+
 
     private Long votingSessionId;
+
+    private String email;
 
     private String party;
 

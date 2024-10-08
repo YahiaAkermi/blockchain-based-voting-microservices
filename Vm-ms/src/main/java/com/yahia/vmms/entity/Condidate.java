@@ -1,5 +1,6 @@
 package com.yahia.vmms.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yahia.vmms.entity.enums.ApplicationStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,8 +32,8 @@ public class Condidate extends BaseEntity{
 //    @Enumerated(EnumType.STRING)
 //    private ApplicationStatus applicationStatus;
 
-
-    @OneToMany(mappedBy = "applicationId.condidate")
+    @JsonIgnore
+    @OneToMany(mappedBy = "condidate")
     private Collection<SessionApplication> listApplications;
 
 

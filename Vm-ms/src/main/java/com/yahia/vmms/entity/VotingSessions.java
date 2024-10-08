@@ -1,5 +1,6 @@
 package com.yahia.vmms.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yahia.vmms.entity.enums.Visibility;
 import com.yahia.vmms.entity.enums.VotingStatus;
 import jakarta.persistence.*;
@@ -34,6 +35,7 @@ public class VotingSessions extends BaseEntity{
 
 
 
-    @OneToMany(mappedBy = "applicationId.votingSession")
+    @JsonIgnore
+    @OneToMany(mappedBy = "votingSession")
     private Collection<SessionApplication> listApplications;
 }

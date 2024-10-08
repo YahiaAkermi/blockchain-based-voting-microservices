@@ -9,26 +9,21 @@ import com.yahia.vmms.entity.compositeIDs.ApplicationID;
 
 public class SessionApplicationMapper {
 
-    public static SessionApplication mapToSessionApplication(SessionApplicationDto sessionApplicationDto, SessionApplication sessionApplication, Condidate condidate, VotingSessions votingSession){
-
-        // 1. building our composite key
-        ApplicationID applicationID=new ApplicationID();
-
-        applicationID.setCondidate(condidate);
-        applicationID.setVotingSession(votingSession);
+    public static SessionApplication mapToSessionApplication(SessionApplicationDto sessionApplicationDto, SessionApplication sessionApplication){
 
 
-        sessionApplication.setApplicationId(applicationID);
+
+        // Set other fields
         sessionApplication.setParty(sessionApplicationDto.getParty());
         sessionApplication.setProgrammeFileUrl(sessionApplicationDto.getProgrammeFileUrl());
-        sessionApplication.setApplicationStatus(sessionApplication.getApplicationStatus());
+        sessionApplication.setApplicationStatus(sessionApplicationDto.getApplicationStatus());
 
-      return  sessionApplication;
+        return sessionApplication;
     }
 
     public static SessionApplicationDtoWithSessionDetails mapToSessionApplicationDtoWithSessionDetails(SessionApplication sessionApplication,SessionApplicationDtoWithSessionDetails sessionApplicationDtoWithSessionDetails){
 
-        sessionApplicationDtoWithSessionDetails.setApplicationID(sessionApplication.getApplicationId());
+        sessionApplicationDtoWithSessionDetails.setApplicationID(sessionApplication.getApplicationID());
         sessionApplicationDtoWithSessionDetails.setApplicationStatus(sessionApplication.getApplicationStatus());
         sessionApplicationDtoWithSessionDetails.setParty(sessionApplication.getParty());
         sessionApplicationDtoWithSessionDetails.setProgrammeFileUrl(sessionApplication.getProgrammeFileUrl());

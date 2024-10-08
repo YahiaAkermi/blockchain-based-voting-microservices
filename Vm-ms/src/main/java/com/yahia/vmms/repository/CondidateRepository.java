@@ -11,4 +11,5 @@ public interface CondidateRepository extends JpaRepository<Condidate,Long> {
 
     Optional<Condidate> findByEmail(String condidateEmail);
 
+
 }

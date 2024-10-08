@@ -14,6 +14,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceAlreadyExists.class)
     public ResponseEntity<ErrorResponseDto> handleResourceAlreadyExistsException(ResourceAlreadyExists exception, WebRequest webRequest){
+
         ErrorResponseDto errorResponseDto=new
                 ErrorResponseDto(webRequest.getDescription(false), HttpStatus.BAD_REQUEST,exception.getMessage()
                 , LocalDateTime.now());

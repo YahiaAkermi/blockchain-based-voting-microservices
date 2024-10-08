@@ -33,7 +33,9 @@ public class CondidateServiceImpl implements ICondidatService {
     // CREATE
     @Override
     public void createCondidate(CondidateDto condidateDto) {
+
         boolean condidateExists = condidateRepository.findByEmail(condidateDto.getEmail()).isPresent();
+
         if (condidateExists) {
             throw new ResourceAlreadyExists("Condidate", condidateDto.getEmail());
         }
@@ -52,7 +54,9 @@ public class CondidateServiceImpl implements ICondidatService {
      * @return List of CondidateDto objects
      */
     public List<CondidateDtoWithId> fetchAllCondidates() {
+
         List<Condidate> condidates = condidateRepository.findAll();
+
         List<CondidateDtoWithId> condidateDtos = condidates.stream().map(
                 candidate-> {
 
@@ -75,6 +79,7 @@ public class CondidateServiceImpl implements ICondidatService {
      * @return CondidateDto object
      */
     public CondidateDtoWithId fetchCondidateById(Long condidateId) {
+
         Condidate condidate = condidateRepository.findById(condidateId)
                 .orElseThrow(() -> new RessourceNotFoundException("Condidate", "ID", condidateId.toString()));
 
@@ -92,6 +97,7 @@ public class CondidateServiceImpl implements ICondidatService {
      * @return true if the candidate is successfully updated
      */
     public boolean updateCondidate(Long condidateId, CondidateDto updatedCondidateDto) {
+
         Condidate condidate = condidateRepository.findById(condidateId)
                 .orElseThrow(() -> new RessourceNotFoundException("Condidate", "ID", condidateId.toString()));
 

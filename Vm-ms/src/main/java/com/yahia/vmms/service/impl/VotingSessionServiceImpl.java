@@ -90,9 +90,13 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
         //adding the 1min delay to voting session end date to be more transparent and honest
         votingSession.setEndDate(votingSession.getEndDate().plusMinutes(1));
 
-        //finally we need to set both fields createdAt and createdBy
+        // we need to set both fields createdAt and createdBy
         votingSession.setCreatedAt(LocalDateTime.now());
         votingSession.setCreatedBy("ADMIN");
+
+        //finally set timestamps
+        votingSession.setCreatedAt(LocalDateTime.now());
+        votingSession.setCreatedBy("ADMIN"+votingSessionDto.getSessionAdminId().toString());
 
         //saving the  new voting to the db
         VotingSessions savedVotingSession =votingSessionsRepository.save(votingSession);
