@@ -61,6 +61,36 @@ public class SessionApplicationController {
 
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<ResponseDto> updateSessionApplication(@RequestBody SessionApplicationDtoWithSessionDetails sessionApplicationDtoWithSessionDetails){
+
+        boolean isUpdated= iSessionApplicationService.updateSessionApplication(sessionApplicationDtoWithSessionDetails);
+
+        if (isUpdated){
+
+            return  ResponseEntity.status(HttpStatus.OK)
+                    .body(new ResponseDto(SessionApplicationConstants.STATUS_200,SessionApplicationConstants.MESSAGE_200));
+        }else {
+            return  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ResponseDto(SessionApplicationConstants.STATUS_417,SessionApplicationConstants.MESSAGE_417_UPDATE));
+        }
+
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<ResponseDto> deleteApplication(@RequestParam Long condidateId,@RequestParam Long sessionId){
+
+        boolean isDeleted= iSessionApplicationService.deleteSessionApplication(condidateId,sessionId);
+
+        if (isDeleted){
+
+            return  ResponseEntity.status(HttpStatus.OK)
+                    .body(new ResponseDto(SessionApplicationConstants.STATUS_200,SessionApplicationConstants.MESSAGE_200));
+        }else {
+            return  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ResponseDto(SessionApplicationConstants.STATUS_417,SessionApplicationConstants.MESSAGE_417_DELETE));
+        }
+    }
 
 
 

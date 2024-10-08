@@ -33,4 +33,11 @@ public class SessionApplicationMapper {
         return sessionApplicationDtoWithSessionDetails;
     }
 
+    //with this mapping function u can only change party and programme because i'll use it for update
+    public static SessionApplication mapFromApplicationWithDetailsToApplication(SessionApplicationDtoWithSessionDetails sessionApplicationDtoWithSessionDetails,SessionApplication sessionApplication){
+        sessionApplication.setParty(sessionApplicationDtoWithSessionDetails.getParty());
+        sessionApplication.setProgrammeFileUrl(sessionApplicationDtoWithSessionDetails.getProgrammeFileUrl());
+        return sessionApplication;
+    }
+
 }

@@ -37,4 +37,19 @@ public interface ISessionApplicationService {
      * @param partyName - String
      */
     ArrayList<SessionApplicationDtoWithSessionDetails> filterApplicationsByParty(String email,String partyName);
+
+    /**
+     * This method will update a voting session application
+     * @param sessionApplicationDtoWithSessionDetails - SessionApplicationDtoWithSessionDetails object
+     */
+    boolean updateSessionApplication(SessionApplicationDtoWithSessionDetails sessionApplicationDtoWithSessionDetails);
+
+    /**
+     * This method will delete a voting session application
+     * @param condidateId - Long
+     * @param sessionId - Long
+     */
+    boolean deleteSessionApplication(Long condidateId, Long sessionId);
+
+
 }

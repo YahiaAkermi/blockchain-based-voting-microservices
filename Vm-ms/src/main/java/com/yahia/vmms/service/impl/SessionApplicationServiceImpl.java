@@ -162,6 +162,51 @@ public class SessionApplicationServiceImpl implements ISessionApplicationService
         return convertFromApplicationsToDtosWithDetails(listApplication);
     }
 
+    /**
+     * This method will update a voting session application
+     *
+     * @param sessionApplicationDtoWithSessionDetails - SessionApplicationDtoWithSessionDetails  object
+     */
+    @Override
+    public boolean updateSessionApplication(SessionApplicationDtoWithSessionDetails sessionApplicationDtoWithSessionDetails ) {
+
+        //check if the application exists
+        SessionApplication retrievedApplication= sessionApplicationRepository.findById(sessionApplicationDtoWithSessionDetails.getApplicationID())
+                .orElseThrow(()-> new RessourceNotFoundException("Voting Session Application","application ID",sessionApplicationDtoWithSessionDetails.getApplicationID().toString()));
+
+
+        //u can solely change party and the submitted election programme
+        SessionApplication updatedAppication=SessionApplicationMapper.mapFromApplicationWithDetailsToApplication(sessionApplicationDtoWithSessionDetails,retrievedApplication);
+
+        //save the changes to DB
+        sessionApplicationRepository.save(updatedAppication);
+
+        return true;
+    }
+
+    /**
+     * This method will delete a voting session application
+     *
+     * @param condidateId - Long
+     * @param sessionId   - Long
+     */
+    @Override
+    public boolean deleteSessionApplication(Long condidateId, Long sessionId) {
+
+        //construct the applicationId
+        ApplicationID applicationID=new ApplicationID();
+        applicationID.setCondidateId(condidateId);
+        applicationID.setVotingSessionId(sessionId);
+
+        //check if the application exists
+        SessionApplication retrievedApplication= sessionApplicationRepository.findById(applicationID)
+                .orElseThrow(()-> new RessourceNotFoundException("Voting Session Application","application ID",applicationID.toString()));
+
+        sessionApplicationRepository.deleteById(applicationID);
+
+
+        return true;
+    }
 
 
     public ArrayList<SessionApplicationDtoWithSessionDetails> convertFromApplicationsToDtosWithDetails(Collection<SessionApplication> listApplication){
