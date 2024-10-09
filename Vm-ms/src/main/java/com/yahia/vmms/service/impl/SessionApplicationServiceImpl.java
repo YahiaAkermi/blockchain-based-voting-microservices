@@ -74,9 +74,7 @@ public class SessionApplicationServiceImpl implements ISessionApplicationService
         sessionApplication.setCondidate(retrievedCondidate);
         sessionApplication.setVotingSession(retrievedVotingSession);
 
-        //adding timestamp
-        sessionApplication.setCreatedAt(LocalDateTime.now());
-        sessionApplication.setCreatedBy("ADMIN");
+
 
 
         // Set the composite key in the sessionApplication entity
