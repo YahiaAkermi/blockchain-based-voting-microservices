@@ -1,0 +1,21 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: voting-ms
+  data:
+    mongodb:
+      uri: mongodb+srv://yaakermi:uMOhzWo3hutWNHMW@voting-sys.a2zkg.mongodb.net/?retryWrites=true&w=majority&appName=voting-sys
+      database: votingdb
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb: DEBUG  # Logs MongoDB queries and operations
+          database: INFO  # Change 'votingdb' to a valid log level like 'INFO'
+
+
+
+
+
