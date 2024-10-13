@@ -6,11 +6,14 @@ import com.yahia.votingms.dto.VoteDtoWithId;
 import com.yahia.votingms.dto.responseStructureDTOs.ResponseDto;
 import com.yahia.votingms.entity.Vote;
 import com.yahia.votingms.service.IVoteService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,12 +21,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/vote") @AllArgsConstructor
+@Validated
 public class VoteController {
 
     private final IVoteService iVoteService;
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createVote(@RequestBody VoteDto voteDto){
+    public ResponseEntity<ResponseDto> createVote(@Valid @RequestBody VoteDto voteDto){
 
         iVoteService.createVote(voteDto);
 
@@ -32,7 +36,10 @@ public class VoteController {
     }
 
     @GetMapping("/filter")
-    public ResponseEntity<Page<Vote>> getAllVotesBySession(@RequestParam Long bySessionId, @RequestParam Integer pageNum, @RequestParam Integer pageSize){
+    public ResponseEntity<Page<Vote>> getAllVotesBySession(
+            @NotNull(message = "session ID should not be null")@RequestParam Long bySessionId,
+            @NotNull(message = "page Number should not be null") @RequestParam Integer pageNum,
+            @NotNull(message = "page Size should not be null")@RequestParam Integer pageSize){
 
         Page<Vote> votesPerPageForParticularVotingSession=iVoteService.fetchAllVotesBySession(bySessionId,pageNum,pageSize);
 
@@ -41,7 +48,10 @@ public class VoteController {
     }
 
     @GetMapping("/filter-by-condidate")
-    public ResponseEntity<Page<Vote>> getAllVotesByCondidate(@RequestParam Long condidateId, @RequestParam Integer pageNum, @RequestParam Integer pageSize){
+    public ResponseEntity<Page<Vote>> getAllVotesByCondidate(
+            @NotNull(message = "session ID should not be null")@RequestParam Long condidateId,
+            @NotNull(message = "page Number should not be null") @RequestParam Integer pageNum,
+            @NotNull(message = "page Size should not be null")@RequestParam Integer pageSize){
 
 
         Page<Vote> votesPerPageForParticularCandidate=iVoteService.fetchAllVotesByCandidate(condidateId,pageNum,pageSize);
@@ -51,7 +61,10 @@ public class VoteController {
     }
 
     @GetMapping("/filter-by-voter")
-    public ResponseEntity<Page<Vote>> getAllVotesByVoter(@RequestParam Long voterId, @RequestParam Integer pageNum, @RequestParam Integer pageSize){
+    public ResponseEntity<Page<Vote>> getAllVotesByVoter(
+            @NotNull(message = "Voter ID should not be null")@RequestParam Long voterId,
+            @NotNull(message = "page Number should not be null")@RequestParam Integer pageNum,
+            @NotNull(message = "page Size should not be null")@RequestParam Integer pageSize){
 
 
         Page<Vote> votesPerPageForParticularVoter=iVoteService.fetchAllVotesByVoter(voterId,pageNum,pageSize);
@@ -61,7 +74,8 @@ public class VoteController {
     }
 
     @GetMapping("/fetch")
-    public ResponseEntity<VoteDtoWithId> fetchVote(@RequestParam String voteId){
+    public ResponseEntity<VoteDtoWithId> fetchVote(
+            @NotNull(message = "Vote ID should not be null")@RequestParam String voteId){
 
 
         VoteDtoWithId votesPerPageForParticularVoter=iVoteService.fetchVote(voteId);
@@ -71,7 +85,9 @@ public class VoteController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<ResponseDto> updateVote(@RequestParam String voteId,@RequestBody VoteDto voteDto ){
+    public ResponseEntity<ResponseDto> updateVote(
+            @NotNull(message = "Vote ID should not be null")@RequestParam String voteId,
+            @Valid@RequestBody VoteDto voteDto ){
 
         boolean isUpdated = iVoteService.updateVote(voteId,voteDto);
 
@@ -86,7 +102,8 @@ public class VoteController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteVote(@RequestParam String voteId){
+    public ResponseEntity<ResponseDto> deleteVote(
+            @NotNull(message = "Vote ID should not be null")@RequestParam String voteId){
 
         boolean isDeleted = iVoteService.deleteVote(voteId);
 
