@@ -21,6 +21,17 @@ public interface VoteRepository extends MongoRepository<Vote,String> {
 
     boolean existsVoteByVotingSessionId(Long votingSessionId);
 
+    boolean existsVoteByCondidateId(Long votingSessionId);
+
+    Page<Vote> findVotesByCondidateId(Long condidateId,Pageable pageable);
+
+
+    boolean existsVoteByVoterId(Long voterId);
+
+    Page<Vote> findVotesByVoterId(Long voterId,Pageable pageable);
+
+    Optional<Vote> findById(Long voteId);
+
 
 
 }
