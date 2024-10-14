@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1290d803-fb86-4585-8744-b3567831c8e8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/audit/AuditAwareImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/dto/configRecord/VmContactInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/configRecord/VoteContactInfoDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/VmMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/VmMsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/VmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/VmController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/entity/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/mapper/VoteMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/mapper/VoteMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +26,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -43,27 +48,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.VotingMsApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/SOFT/IdeaProjects/blockchain_based_voting_sys/voting-ms/src/main/java/com/yahia/votingms/dto&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.VmMsApplication.executor": "Run",
+    "Spring Boot.VotingMsApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/SOFT/IdeaProjects/blockchain_based_voting_sys/voting-ms/src/main/java/com/yahia/votingms/dto",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\SOFT\IdeaProjects\blockchain_based_voting_sys\voting-ms\src\main\java\com\yahia\votingms\dto" />
@@ -98,7 +104,7 @@
       <workItem from="1728809611888" duration="1152000" />
       <workItem from="1728819203985" duration="7797000" />
       <workItem from="1728835137498" duration="12797000" />
-      <workItem from="1728895579557" duration="1897000" />
+      <workItem from="1728895579557" duration="4945000" />
     </task>
     <servers />
   </component>

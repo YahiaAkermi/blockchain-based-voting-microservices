@@ -20,3 +20,13 @@ spring:
 geolocation:
   api:
     url: http://ip-api.com/json
+
+
+voting-managment:
+  message: "Welcome to Voting managment service related local APIs"
+  contactDetails:
+    name: "Akermi yahia - Engineer"
+    email: "ya.akermi@esi-sba.dz"
+  onCallSupport:
+    - (213) 540-752-251
+    - (213) 661-161-378

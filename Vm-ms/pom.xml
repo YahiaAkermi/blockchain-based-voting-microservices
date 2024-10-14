@@ -11,6 +11,7 @@
     <groupId>com.yahia</groupId>
     <artifactId>Vm-ms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>Vm-ms</name>
     <description>Vm-ms</description>
     <url/>
@@ -88,6 +89,17 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <to>
+                        <image>akermiyahia/${project.artifactId}:v1</image>
+                    </to>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

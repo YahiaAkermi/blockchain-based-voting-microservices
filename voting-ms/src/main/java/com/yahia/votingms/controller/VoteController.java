@@ -3,6 +3,7 @@ package com.yahia.votingms.controller;
 import com.yahia.votingms.constants.VoteConstants;
 import com.yahia.votingms.dto.VoteDto;
 import com.yahia.votingms.dto.VoteDtoWithId;
+import com.yahia.votingms.dto.configRecord.VoteContactInfoDto;
 import com.yahia.votingms.dto.responseStructureDTOs.ResponseDto;
 import com.yahia.votingms.entity.Vote;
 import com.yahia.votingms.service.IVoteService;
@@ -10,6 +11,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,9 @@ import java.util.Optional;
 public class VoteController {
 
     private final IVoteService iVoteService;
+
+    @Autowired
+    private VoteContactInfoDto voteContactInfoDto;
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createVote(@Valid @RequestBody VoteDto voteDto){
@@ -119,6 +124,12 @@ public class VoteController {
 
 
 
+    @GetMapping("/contact-info")
+    public ResponseEntity<VoteContactInfoDto> getContactInfo() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(voteContactInfoDto);
+    }
 
 
 

@@ -4,6 +4,7 @@ package com.yahia.vmms.controller;
 import com.yahia.vmms.constants.VotingSessionConstants;
 import com.yahia.vmms.dto.VotingSessionDto;
 import com.yahia.vmms.dto.VotingSessionDtoWithId;
+import com.yahia.vmms.dto.configRecord.VmContactInfoDto;
 import com.yahia.vmms.dto.responseStructureDTOs.ResponseDto;
 import com.yahia.vmms.entity.enums.Visibility;
 import com.yahia.vmms.entity.enums.VotingStatus;
@@ -13,6 +14,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -29,6 +31,9 @@ import java.util.ArrayList;
 public class VmController {
 
     private IVotingSessionService iVotingSessionService;
+
+    @Autowired
+    private VmContactInfoDto vmContactInfoDto;
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createVotingSession(@Valid @RequestBody VotingSessionDto votingSessionDto){
@@ -127,4 +132,13 @@ public class VmController {
         }
 
     }
+
+    @GetMapping("/contact-info")
+    public ResponseEntity<VmContactInfoDto> getContactInfo() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(vmContactInfoDto);
+    }
+
+
 }
