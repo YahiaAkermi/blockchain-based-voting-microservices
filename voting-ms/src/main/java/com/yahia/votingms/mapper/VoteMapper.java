@@ -8,6 +8,14 @@ public  class VoteMapper {
 
     public static Vote maptoVote(VoteDto voteDto,Vote vote){
 
+        vote.setVoterId(voteDto.getVoterId());
+        vote.setCondidateId(voteDto.getCondidateId());
+        vote.setVotingSessionId(voteDto.getVotingSessionId());
+        return vote;
+    }
+
+    public static Vote maptoVote2(VoteDto voteDto,Vote vote){
+
         // i cannot set the voterId or voting because it doesn't make any sense I'm going to use it inside updateVote
         //so i only change the candidateId
         vote.setCondidateId(voteDto.getCondidateId());

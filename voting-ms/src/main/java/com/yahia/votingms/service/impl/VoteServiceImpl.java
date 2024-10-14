@@ -154,7 +154,7 @@ public class VoteServiceImpl implements IVoteService {
         );
 
         //map it to Vote
-        Vote updatedVote=VoteMapper.maptoVote(voteDto,retrievedVote);
+        Vote updatedVote=VoteMapper.maptoVote2(voteDto,retrievedVote);
 
         //finally we save in our db
         voteRepository.save(updatedVote);
