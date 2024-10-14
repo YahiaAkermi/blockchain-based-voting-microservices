@@ -7,6 +7,12 @@ spring:
     mongodb:
       uri: mongodb+srv://yaakermi:uMOhzWo3hutWNHMW@voting-sys.a2zkg.mongodb.net/?retryWrites=true&w=majority&appName=voting-sys
       database: votingdb
+  config:
+    import:
+      - "application_qa.yml"
+      - "application_prod.yml"
+  profiles:
+    active: "qa"
 logging:
   level:
     org:
