@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1290d803-fb86-4585-8744-b3567831c8e8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/dto/configRecord/VmContactInfoDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/configRecord/VoteContactInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vm-ms/src/main/resources/application_prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vm-ms/src/main/resources/application_qa.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/VmMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/VmMsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/VmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/VmController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +69,7 @@
       <recent name="C:\Users\SOFT\IdeaProjects\blockchain_based_voting_sys\voting-ms\src\main\java\com\yahia\votingms\dto" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.VotingMsApplication">
+  <component name="RunManager" selected="Spring Boot.VmMsApplication">
     <configuration name="VmMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="Vm-ms" />
@@ -104,7 +98,7 @@
       <workItem from="1728809611888" duration="1152000" />
       <workItem from="1728819203985" duration="7797000" />
       <workItem from="1728835137498" duration="12797000" />
-      <workItem from="1728895579557" duration="4945000" />
+      <workItem from="1728895579557" duration="6913000" />
     </task>
     <servers />
   </component>

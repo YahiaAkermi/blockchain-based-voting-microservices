@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+voting-managment:
+  message: "Welcome Voting Managment service related QA APIs "
+  contactDetails:
+    name: "Akermi Yahia - QA Lead"
+    email: "yahia@gmail.com"
+  onCallSupport:
+    - (666) 265-3765
+    - (666) 734-8371
