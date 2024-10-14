@@ -5,7 +5,7 @@ spring:
       on-profile: "qa"
 
 voting-ms:
-  message: "Welcome Voting Managment service related QA APIs "
+  message: "Welcome to Vote service related QA APIs "
   contactDetails:
     name: "Akermi Yahia - QA Lead"
     email: "yahia@gmail.com"

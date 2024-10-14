@@ -1,0 +1,19 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/YahiaAkermi/blockchain-based-voting-sys-config.git"
+          default-label: main  #which branch i'm working on
+          timeout: 10           #if it surpasses 5 seconds my configserver will throw an exception
+          clone-on-start: true  #to clone the config repo on our local sys
+          force-pull: true       #so all changes done in my own repo get applied on remote repo also
+encrypt:
+  key: "4F2E7B910C3D8A6F5B2E7C9D0A1B3E"
