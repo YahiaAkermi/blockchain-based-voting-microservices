@@ -17,17 +17,21 @@ spring:
       ddl-auto: update
     show-sql: true
   config:
-    import:
-      - "application_qa.yml"
-      - "application_prod.yml"
+    import: "optional:configserver:http://localhost:8071/"
   profiles:
-    active:
-      - "qa"
+    active: "prod"
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 
 geolocation:
   api:
     url: http://ip-api.com/json
-
 
 voting-managment:
   message: "Welcome to Voting managment service related local APIs"

@@ -8,11 +8,21 @@ spring:
       uri: mongodb+srv://yaakermi:uMOhzWo3hutWNHMW@voting-sys.a2zkg.mongodb.net/?retryWrites=true&w=majority&appName=voting-sys
       database: votingdb
   config:
-    import:
-      - "application_qa.yml"
-      - "application_prod.yml"
+    import: "optional:configserver:http://localhost:8071/"
   profiles:
-    active: "qa"
+    active: "prod"
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+
+
 logging:
   level:
     org:
@@ -20,9 +30,6 @@ logging:
         data:
           mongodb: DEBUG  # Logs MongoDB queries and operations
           database: INFO  # Change 'votingdb' to a valid log level like 'INFO'
-
-
-
 
 voting-ms:
   message: "Welcome to Vote service related local APIs"

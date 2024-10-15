@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d891c5a6-4ae5-4d89-aa99-8e20b72a5fde" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="5e13402f-56c4-4811-b190-4fe11ae4b426" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application_qa.yml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/resources/application_qa.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/dto/configRecord/VmContactInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/dto/configRecord/VmContactInfoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/resources/application_prod.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/resources/application_qa.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configserver/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/configserver/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/configRecord/VoteContactInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/configRecord/VoteContactInfoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application_prod.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application_qa.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,52 +29,53 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "contexts": [
+  <component name="KubernetesApiProvider">{
+  &quot;contexts&quot;: [
     {
-      "name": "docker-desktop"
+      &quot;name&quot;: &quot;docker-desktop&quot;
     }
   ],
-  "isMigrated": true
-}]]></component>
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="KubernetesSettings">
     <option name="contextName" value="docker-desktop" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
-  <component name="ProjectId" id="2nQlti02fY2xbnFBhxliLUW3YUw" />
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2nT9OVtnrsGzx3CD8V7yFOLtk5j" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ConfigserverApplication.executor": "Run",
-    "Spring Boot.VmMsApplication.executor": "Run",
-    "Spring Boot.VotingMsApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ConfigserverApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.VmMsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.VotingMsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -75,7 +85,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ConfigserverApplication">
+  <component name="RunManager" selected="Spring Boot.VotingMsApplication">
     <configuration name="ConfigserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="configserver" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.yahia.configserver.ConfigserverApplication" />
@@ -103,12 +113,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d891c5a6-4ae5-4d89-aa99-8e20b72a5fde" name="Changes" comment="" />
-      <created>1728913399140</created>
+      <changelist id="5e13402f-56c4-4811-b190-4fe11ae4b426" name="Changes" comment="" />
+      <created>1728986168861</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1728913399140</updated>
-      <workItem from="1728913402485" duration="6749000" />
+      <updated>1728986168861</updated>
+      <workItem from="1728986171279" duration="1121000" />
+      <workItem from="1728987310219" duration="315000" />
+      <workItem from="1728988572496" duration="1007000" />
     </task>
     <servers />
   </component>

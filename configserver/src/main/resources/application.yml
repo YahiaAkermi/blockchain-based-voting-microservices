@@ -17,3 +17,9 @@ spring:
           force-pull: true       #so all changes done in my own repo get applied on remote repo also
 encrypt:
   key: "4F2E7B910C3D8A6F5B2E7C9D0A1B3E"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
