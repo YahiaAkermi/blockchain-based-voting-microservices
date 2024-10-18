@@ -9,6 +9,11 @@ spring:
       database: votingdb
   config:
     import: "optional:configserver:http://localhost:8071/"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
   profiles:
     active: "prod"
 

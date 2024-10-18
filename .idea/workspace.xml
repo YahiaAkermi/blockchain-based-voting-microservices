@@ -5,21 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e13402f-56c4-4811-b190-4fe11ae4b426" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vm-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/dto/configRecord/VmContactInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/dto/configRecord/VmContactInfoDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/resources/application_prod.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/resources/application_qa.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/configserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configserver/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/configserver/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voting-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/configRecord/VoteContactInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/configRecord/VoteContactInfoDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application_prod.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application_qa.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +52,9 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ConfigserverApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.VmMsApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.VotingMsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ConfigserverApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.VmMsApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.VotingMsApplication.executor&quot;: &quot;Debug&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -76,6 +68,9 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -85,7 +80,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.VotingMsApplication">
+  <component name="RunManager" selected="Spring Boot.VmMsApplication">
     <configuration name="ConfigserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="configserver" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.yahia.configserver.ConfigserverApplication" />
@@ -120,7 +115,8 @@
       <updated>1728986168861</updated>
       <workItem from="1728986171279" duration="1121000" />
       <workItem from="1728987310219" duration="315000" />
-      <workItem from="1728988572496" duration="1007000" />
+      <workItem from="1728988572496" duration="1577000" />
+      <workItem from="1729274236046" duration="2740000" />
     </task>
     <servers />
   </component>
