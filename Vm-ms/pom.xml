@@ -9,11 +9,11 @@
         <relativePath/>
     </parent>
     <groupId>com.yahia</groupId>
-    <artifactId>Vm-ms</artifactId>
+    <artifactId>vm-ms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Vm-ms</name>
-    <description>Vm-ms</description>
+    <name>vm-ms</name>
+    <description>vm-ms</description>
 
     <!-- Java version -->
     <properties>
