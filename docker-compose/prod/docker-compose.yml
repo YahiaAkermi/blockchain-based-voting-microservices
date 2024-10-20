@@ -1,5 +1,15 @@
 services:
 
+  voting-managmentdb:
+    container_name: voting-managmentDB
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: votingmanagmentdb
+    extends:
+      file: common-config.yml
+      service: microservice-db-config
+
   rabbit:
     image: rabbitmq:3.13-management
     hostname: rabbitmq
@@ -17,7 +27,7 @@ services:
       service: network-deploy-service
 
   configserver:
-    image: "akermiyahia/configserver:v1"
+    image: "akermiyahia/configserver:v2-rabbitmq-mysql"
     container_name: configserver-voting-app
     ports:
       - "8071:8071"
@@ -35,21 +45,26 @@ services:
       service: microservice-base-config
 
   voting-managment:
-    image: "akermiyahia/vm-ms:v1"
+    image: "akermiyahia/vm-ms:v2-rabbitmq-mysql"
     container_name: vm-ms
     ports:
       - "8080:8080"
     depends_on:
+      voting-managmentdb:
+        condition: service_healthy
       configserver:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "vm-ms"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://voting-managmentdb:3306/votingmanagmentdb"
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
     extends:
       file :  common-config.yml
       service: microservice-configserver-config
 
   voting:
-    image: "akermiyahia/voting-ms:v1"
+    image: "akermiyahia/voting-ms:v2-rabbitmq-mysql"
     container_name: voting-ms
     ports:
       - "8081:8081"
