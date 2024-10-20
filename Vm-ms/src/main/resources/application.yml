@@ -17,12 +17,40 @@ spring:
   profiles:
     active: "prod"
 
+#---------------- eureka properties
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+  # infos that are going to be displayed in eureka dashboard
+info:
+ app :
+  name: "voting management microservice"
+  description: "here we handle condidate application sessions and voting sessions "
+  version: "1.0.0"
+
+#------------ end eureka properties
+
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
+endpoints:
+  shutdown:
+    enabled: true
 
 
 geolocation:
@@ -37,3 +65,5 @@ voting-managment:
   onCallSupport:
     - (213) 540-752-251
     - (213) 661-161-378
+
+

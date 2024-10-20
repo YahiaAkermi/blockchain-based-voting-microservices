@@ -12,6 +12,25 @@ spring:
   profiles:
     active: "prod"
 
+#---------------- eureka properties
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+  # infos that are going to be displayed in eureka dashboard
+info:
+  app :
+    name: "voting microservice"
+    description: "here we handle how users cast votes "
+    version: "1.0.0"
+
+#------------ end eureka properties
+
 
 
 management:
@@ -19,6 +38,16 @@ management:
     web:
       exposure:
         include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
+
+endpoints:
+  shutdown:
+    enabled: true
 
 
 
