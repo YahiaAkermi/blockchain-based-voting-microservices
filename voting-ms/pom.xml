@@ -101,7 +101,7 @@
 				<version>3.4.1</version>
 				<configuration>
 					<to>
-						<image>akermiyahia/${project.artifactId}:v1</image>
+						<image>akermiyahia/${project.artifactId}:v2-rabbitmq-mysql</image>
 					</to>
 				</configuration>
 			</plugin>
