@@ -30,7 +30,7 @@ eureka:
   # infos that are going to be displayed in eureka dashboard
 info:
  app :
-  name: "voting management microservice"
+  name: "votingmanagement"
   description: "here we handle condidate application sessions and voting sessions "
   version: "1.0.0"
 

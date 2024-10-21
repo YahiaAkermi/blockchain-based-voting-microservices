@@ -25,7 +25,7 @@ eureka:
   # infos that are going to be displayed in eureka dashboard
 info:
   app :
-    name: "voting microservice"
+    name: "voting"
     description: "here we handle how users cast votes "
     version: "1.0.0"
 

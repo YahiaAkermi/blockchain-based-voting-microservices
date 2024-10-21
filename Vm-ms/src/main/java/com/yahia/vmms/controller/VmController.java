@@ -93,7 +93,7 @@ public class VmController {
 
     @GetMapping("/fetch-by-id")
     public ResponseEntity< VotingSessionDtoWithId> fetchById(
-            @NotEmpty(message = "votingSessionId should not be empty") @RequestParam Long votingSessionId){
+            @NotNull(message = "votingSessionId should not be null") @RequestParam Long votingSessionId){
 
 
         VotingSessionDtoWithId votingSessionDtoWithId=iVotingSessionService.fetchVotingSessionById(votingSessionId);

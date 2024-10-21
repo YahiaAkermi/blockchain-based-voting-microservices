@@ -2,18 +2,22 @@ package com.yahia.votingms.service.impl;
 
 import com.yahia.votingms.dto.VoteDto;
 import com.yahia.votingms.dto.VoteDtoWithId;
+import com.yahia.votingms.dto.clientDtos.VotingSessionDtoWithId;
 import com.yahia.votingms.entity.Vote;
+import com.yahia.votingms.exception.CastedVoteRejectedException;
 import com.yahia.votingms.exception.ResourceNotFoundException;
 import com.yahia.votingms.mapper.VoteMapper;
 import com.yahia.votingms.repository.VoteRepository;
 import com.yahia.votingms.service.IVoteService;
 import com.yahia.votingms.exception.VoteAlreadyCastedException;
+import com.yahia.votingms.service.client.VmMsFeignClient;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -21,6 +25,7 @@ import java.util.Optional;
 public class VoteServiceImpl implements IVoteService {
 
     private final VoteRepository voteRepository;
+    private final VmMsFeignClient vmMsFeignClient;
 
 
     /**
@@ -33,6 +38,11 @@ public class VoteServiceImpl implements IVoteService {
 
         //0. i need to check if the voting session is open to vote after establishing communication between microservices
 
+        VotingSessionDtoWithId votingSessionDtoWithId=vmMsFeignClient.fetchVotingSession(voteDto.getVotingSessionId()).getBody();
+
+        if(! votingSessionDtoWithId.getVotingSessionDto().getEndDate().isAfter(LocalDateTime.now())){
+            throw new CastedVoteRejectedException("cannot cast this vote because the voting session is closed");
+        }
 
         //1.then I need to check if the user is eligible to vote when i start working on the communication between my ms
 

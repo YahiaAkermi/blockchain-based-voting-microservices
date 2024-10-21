@@ -5,19 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e13402f-56c4-4811-b190-4fe11ae4b426" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/clientDtos/VotingSessionDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/clientDtos/VotingSessionDtoWithId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/clientDtos/enums/Visibility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/clientDtos/enums/VotingStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/exception/CastedVoteRejectedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFeignClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vm-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/VmMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/VmMsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/VmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/VmController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voting-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,7 +77,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/SOFT/IdeaProjects/blockchain_based_voting_sys/docker-compose/qa",
+    "last_opened_file_path": "C:/Users/SOFT/IdeaProjects/blockchain_based_voting_sys/voting-ms/src/main/java/com/yahia/votingms/dto/clientDtos/enums",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,8 +93,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\SOFT\IdeaProjects\blockchain_based_voting_sys\voting-ms\src\main\java\com\yahia\votingms\dto\clientDtos\enums" />
       <recent name="C:\Users\SOFT\IdeaProjects\blockchain_based_voting_sys\docker-compose\qa" />
       <recent name="C:\Users\SOFT\IdeaProjects\blockchain_based_voting_sys\docker-compose\prod" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yahia.votingms.dto.clientDtos" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -143,7 +163,7 @@
       <workItem from="1729274236046" duration="2740000" />
       <workItem from="1729283354124" duration="6949000" />
       <workItem from="1729345342921" duration="3826000" />
-      <workItem from="1729408548882" duration="16957000" />
+      <workItem from="1729408548882" duration="21824000" />
     </task>
     <servers />
   </component>
