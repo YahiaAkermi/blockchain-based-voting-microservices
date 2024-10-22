@@ -40,7 +40,7 @@ public class VoteServiceImpl implements IVoteService {
 
         VotingSessionDtoWithId votingSessionDtoWithId=vmMsFeignClient.fetchVotingSession(voteDto.getVotingSessionId()).getBody();
 
-        if(! votingSessionDtoWithId.getVotingSessionDto().getEndDate().isAfter(LocalDateTime.now())){
+        if(!votingSessionDtoWithId.getVotingSessionDto().getEndDate().isAfter(LocalDateTime.now())){
             throw new CastedVoteRejectedException("cannot cast this vote because the voting session is closed");
         }
 

@@ -200,6 +200,9 @@ public class SessionApplicationServiceImpl implements ISessionApplicationService
         SessionApplication retrievedApplication= sessionApplicationRepository.findById(applicationID)
                 .orElseThrow(()-> new RessourceNotFoundException("Voting Session Application","application ID",applicationID.toString()));
 
+        //we have to first to delete the condidate then it's application to avoid conflicts
+        condidateRepository.deleteById(condidateId);
+
         sessionApplicationRepository.deleteById(applicationID);
 
 

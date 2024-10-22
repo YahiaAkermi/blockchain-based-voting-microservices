@@ -9,6 +9,7 @@ import com.yahia.vmms.exception.ResourceAlreadyExists;
 import com.yahia.vmms.exception.RessourceNotFoundException;
 import com.yahia.vmms.mapper.CondidateMapper;
 import com.yahia.vmms.repository.CondidateRepository;
+import com.yahia.vmms.repository.SessionApplicationRepository;
 import com.yahia.vmms.repository.VotingSessionsRepository;
 import com.yahia.vmms.service.ICondidatService;
 import org.springframework.stereotype.Service;
@@ -25,9 +26,12 @@ public class CondidateServiceImpl implements ICondidatService {
     private final CondidateRepository condidateRepository;
     private final VotingSessionsRepository votingSessionsRepository;
 
-    public CondidateServiceImpl(CondidateRepository condidateRepository, VotingSessionsRepository votingSessionsRepository) {
+    private final SessionApplicationRepository sessionApplicationRepository;
+
+    public CondidateServiceImpl(CondidateRepository condidateRepository, VotingSessionsRepository votingSessionsRepository,SessionApplicationRepository sessionApplicationRepository) {
         this.condidateRepository = condidateRepository;
         this.votingSessionsRepository = votingSessionsRepository;
+        this.sessionApplicationRepository=sessionApplicationRepository;
     }
 
     // CREATE
@@ -134,6 +138,10 @@ public class CondidateServiceImpl implements ICondidatService {
         Condidate condidate = condidateRepository.findById(condidateId)
                 .orElseThrow(() -> new RessourceNotFoundException("Condidate", "ID", condidateId.toString()));
 
+        //first we need to delete his applications
+        sessionApplicationRepository.deleteSessionApplicationsByApplicationID_CondidateId(condidateId);
+
+        //finally we delete the condidate
         condidateRepository.deleteById(condidateId);
         return true;
     }

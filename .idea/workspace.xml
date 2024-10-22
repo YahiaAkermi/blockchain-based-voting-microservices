@@ -5,22 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e13402f-56c4-4811-b190-4fe11ae4b426" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/clientDtos/VotingSessionDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/clientDtos/VotingSessionDtoWithId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/clientDtos/enums/Visibility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/dto/clientDtos/enums/VotingStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/exception/CastedVoteRejectedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFeignClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vm-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/VmMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/VmMsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/VmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/VmController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/SessionApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/SessionApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/repository/SessionApplicationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/repository/SessionApplicationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/repository/VotingSessionsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/repository/VotingSessionsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/CondidateServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/CondidateServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/SessionApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/SessionApplicationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/VotingSessionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/VotingSessionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configserver/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/default/common-config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/default/common-config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voting-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/exception/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +36,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
   </component>
   <component name="KubernetesApiProvider">{
   &quot;contexts&quot;: [
@@ -69,10 +71,10 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ConfigserverApplication.executor": "Run",
-    "Spring Boot.EurekaserverApplication.executor": "Run",
-    "Spring Boot.VmMsApplication.executor": "Run",
-    "Spring Boot.VotingMsApplication.executor": "Run",
+    "Spring Boot.ConfigserverApplication.executor": "Debug",
+    "Spring Boot.EurekaserverApplication.executor": "Debug",
+    "Spring Boot.VmMsApplication.executor": "Debug",
+    "Spring Boot.VotingMsApplication.executor": "Debug",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "17",
@@ -110,7 +112,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.VmMsApplication">
+  <component name="RunManager" selected="Spring Boot.VotingMsApplication">
     <configuration name="ConfigserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="configserver" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.yahia.configserver.ConfigserverApplication" />
@@ -163,7 +165,10 @@
       <workItem from="1729274236046" duration="2740000" />
       <workItem from="1729283354124" duration="6949000" />
       <workItem from="1729345342921" duration="3826000" />
-      <workItem from="1729408548882" duration="21824000" />
+      <workItem from="1729408548882" duration="22305000" />
+      <workItem from="1729497281236" duration="651000" />
+      <workItem from="1729530430531" duration="5662000" />
+      <workItem from="1729576838361" duration="6279000" />
     </task>
     <servers />
   </component>

@@ -4,7 +4,9 @@ import com.yahia.vmms.entity.VotingSessions;
 import com.yahia.vmms.entity.enums.Visibility;
 import com.yahia.vmms.entity.enums.VotingStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -25,6 +27,8 @@ public interface VotingSessionsRepository extends JpaRepository<VotingSessions,L
 
     Collection<VotingSessions> findAllByVotingStatusEqualsAndAllowedRegionsContainingOrVisibilityEquals( VotingStatus votingStatus ,String clientCountryCode, Visibility visibility);
 
+    @Transactional
+    @Modifying
     void deleteById(Long votingSessionId);
 
 }

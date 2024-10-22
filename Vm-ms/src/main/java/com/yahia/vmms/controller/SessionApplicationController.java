@@ -91,8 +91,8 @@ public class SessionApplicationController {
 
     @DeleteMapping("/delete")
     public ResponseEntity<ResponseDto> deleteApplication(
-            @NotEmpty(message = "condidateId should not be empty") @RequestParam Long condidateId,
-            @NotEmpty(message = "sessionId should not be empty") @RequestParam Long sessionId){
+            @NotNull(message = "condidateId should not be empty") @RequestParam Long condidateId,
+            @NotNull(message = "sessionId should not be empty") @RequestParam Long sessionId){
 
         boolean isDeleted= iSessionApplicationService.deleteSessionApplication(condidateId,sessionId);
 

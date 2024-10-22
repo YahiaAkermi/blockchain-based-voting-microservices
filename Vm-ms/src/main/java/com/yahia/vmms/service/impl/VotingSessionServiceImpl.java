@@ -11,6 +11,7 @@ import com.yahia.vmms.exception.RessourceNotFoundException;
 import com.yahia.vmms.exception.ResourceAlreadyExists;
 import com.yahia.vmms.mapper.VotingSessionMapper;
 import com.yahia.vmms.repository.CondidateRepository;
+import com.yahia.vmms.repository.SessionApplicationRepository;
 import com.yahia.vmms.repository.VotingSessionsRepository;
 import com.yahia.vmms.service.IVotingSessionService;
 import com.yahia.vmms.service.geolocation.dto.GeoResponse;
@@ -31,13 +32,15 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
 
     //injecting our repos along with restTemplate to make a call to another 3rd party API
     public VotingSessionServiceImpl(VotingSessionsRepository votingSessionsRepository
-            ,CondidateRepository condidateRepository,RestTemplate restTemplate) {
+            ,CondidateRepository condidateRepository,SessionApplicationRepository sessionApplicationRepository,RestTemplate restTemplate) {
         this.restTemplate=restTemplate;
         this.votingSessionsRepository=votingSessionsRepository;
         this.condidateRepository=condidateRepository;
+        this.sessionApplicationRepository=sessionApplicationRepository;
 
     }
 
+    private final SessionApplicationRepository sessionApplicationRepository;
     private final VotingSessionsRepository votingSessionsRepository;
     private final CondidateRepository condidateRepository;
 
@@ -254,6 +257,9 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
         VotingSessions votingSession=votingSessionsRepository.findById(votingSessionId).orElseThrow(
                 ()-> new RessourceNotFoundException("Voting Session","voting session ID",votingSessionId.toString())
         );
+
+        //first we have to delete the voting session applications
+        sessionApplicationRepository.deleteSessionApplicationsByApplicationID_VotingSessionId(votingSessionId);
 
         votingSessionsRepository.deleteById(votingSessionId);
 
