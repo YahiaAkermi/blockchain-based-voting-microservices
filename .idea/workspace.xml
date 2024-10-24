@@ -5,20 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e13402f-56c4-4811-b190-4fe11ae4b426" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/SessionApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/SessionApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/repository/SessionApplicationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/repository/SessionApplicationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/repository/VotingSessionsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/repository/VotingSessionsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/CondidateServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/CondidateServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/SessionApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/SessionApplicationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/VotingSessionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/VotingSessionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configserver/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/default/common-config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/default/common-config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eurekaserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eurekaserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/prod/common-config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/common-config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/qa/common-config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/qa/common-config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/qa/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/qa/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,14 +74,17 @@
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/SOFT/IdeaProjects/blockchain_based_voting_sys/voting-ms/src/main/java/com/yahia/votingms/dto/clientDtos/enums",
+    "last_opened_file_path": "C:/Users/SOFT/IdeaProjects/blockchain_based_voting_sys/docker-compose/qa",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "advanced.settings",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -168,7 +166,9 @@
       <workItem from="1729408548882" duration="22305000" />
       <workItem from="1729497281236" duration="651000" />
       <workItem from="1729530430531" duration="5662000" />
-      <workItem from="1729576838361" duration="6279000" />
+      <workItem from="1729576838361" duration="14803000" />
+      <workItem from="1729667792150" duration="7655000" />
+      <workItem from="1729700868688" duration="3664000" />
     </task>
     <servers />
   </component>

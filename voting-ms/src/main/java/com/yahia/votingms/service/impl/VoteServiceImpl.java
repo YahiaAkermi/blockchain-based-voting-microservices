@@ -12,12 +12,17 @@ import com.yahia.votingms.service.IVoteService;
 import com.yahia.votingms.exception.VoteAlreadyCastedException;
 import com.yahia.votingms.service.client.VmMsFeignClient;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.chrono.ChronoLocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -26,6 +31,8 @@ public class VoteServiceImpl implements IVoteService {
 
     private final VoteRepository voteRepository;
     private final VmMsFeignClient vmMsFeignClient;
+
+    private static final Logger logger = LoggerFactory.getLogger(VoteServiceImpl.class);
 
 
     /**
@@ -36,30 +43,39 @@ public class VoteServiceImpl implements IVoteService {
     @Override
     public void createVote(VoteDto voteDto) {
 
-        //0. i need to check if the voting session is open to vote after establishing communication between microservices
+        // 0. Fetch voting session details
+        VotingSessionDtoWithId votingSessionDtoWithId = vmMsFeignClient.fetchVotingSession(voteDto.getVotingSessionId()).getBody();
 
-        VotingSessionDtoWithId votingSessionDtoWithId=vmMsFeignClient.fetchVotingSession(voteDto.getVotingSessionId()).getBody();
+        // Assuming votingSessionEndDate is in UTC+2, convert it to UTC (adjust the ZoneId if necessary)
+        ZonedDateTime votingSessionEndDate = votingSessionDtoWithId.getVotingSessionDto()
+                .getEndDate().atZone(ZoneId.of("UTC+2")).withZoneSameInstant(ZoneId.of("UTC"));
 
-        if(!votingSessionDtoWithId.getVotingSessionDto().getEndDate().isAfter(LocalDateTime.now())){
-            throw new CastedVoteRejectedException("cannot cast this vote because the voting session is closed");
+        // Log the converted voting session end date in UTC
+        logger.warn("Voting session end date (converted to UTC): " + votingSessionEndDate);
+
+        // Get the current time as ZonedDateTime in UTC
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
+
+        // Log the current time in UTC
+        logger.warn("Current time (UTC): " + now);
+
+        // 1. Check if the voting session is closed
+        if (votingSessionEndDate.isBefore(now)) {
+            logger.warn("Voting session is closed. Cannot cast vote.");
+            throw new CastedVoteRejectedException("Cannot cast this vote because the voting session is closed.");
         }
 
-        //1.then I need to check if the user is eligible to vote when i start working on the communication between my ms
+        // 2. Check if the voter has already voted in this session
+        Optional<Vote> retrievedVote = voteRepository.findVoteByVoterIdAndVotingSessionId(voteDto.getVoterId(), voteDto.getVotingSessionId());
 
-        //2.check if the voter has already voted in a specific session
-        Optional<Vote> retrievedVote=voteRepository.findVoteByVoterIdAndVotingSessionId(voteDto.getVoterId(), voteDto.getVotingSessionId());
-
-        if (retrievedVote.isPresent()){
-         throw new VoteAlreadyCastedException(String.format("Vote has been already casted by %s in the following voting session %s"
-                    ,voteDto.getVoterId(),voteDto.getVotingSessionId()));
+        if (retrievedVote.isPresent()) {
+            throw new VoteAlreadyCastedException(String.format("Vote has already been cast by %s in voting session %s", voteDto.getVoterId(), voteDto.getVotingSessionId()));
         }
 
+        // 3. Save the vote
+        voteRepository.save(VoteMapper.maptoVote(voteDto, new Vote()));
 
-
-
-        //3. then i will map to Vote so i can store it in votes' collection
-        voteRepository.save(VoteMapper.maptoVote(voteDto,new Vote()));
-
+        logger.info("Successfully cast vote for voterId: " + voteDto.getVoterId());
     }
 
     /**

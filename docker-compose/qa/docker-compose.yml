@@ -10,9 +10,8 @@ services:
       file: common-config.yml
       service: microservice-db-config
 
-
   configserver:
-    image: "akermiyahia/configserver:v2-rabbitmq-mysql"
+    image: "akermiyahia/configserver:v3"
     container_name: configserver-voting-app
     ports:
       - "8071:8071"
@@ -26,8 +25,29 @@ services:
       file: common-config.yml
       service: microservice-base-config
 
+
+  eurekaserver:
+    image: "akermiyahia/eurekaserver:v3"
+    container_name: eurekaserver-voting-app
+    ports:
+      - "8070:8070"
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver"
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
   voting-managment:
-    image: "akermiyahia/vm-ms:v2-rabbitmq-mysql"
+    image: "akermiyahia/vm-ms:v3"
     container_name: vm-ms
     ports:
       - "8080:8080"
@@ -36,28 +56,35 @@ services:
         condition: service_healthy
       configserver:
         condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "vm-ms"
       SPRING_DATASOURCE_URL: "jdbc:mysql://voting-managmentdb:3306/votingmanagmentdb"
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+
     extends:
       file :  common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eureka-config
 
   voting:
-    image: "akermiyahia/voting-ms:v2-rabbitmq-mysql"
+    image: "akermiyahia/voting-ms:v3"
     container_name: voting-ms
     ports:
       - "8081:8081"
     depends_on:
-     configserver:
-       condition: service_healthy
+      configserver:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "voting-ms"
+
+
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eureka-config
 
 networks:
   yahia-ORG:

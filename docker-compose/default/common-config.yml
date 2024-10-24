@@ -16,6 +16,8 @@ services:
       start_period: 10s
     environment:
       MYSQL_ROOT_PASSWORD: root
+      Tz: UTC
+
 
   microservice-base-config:
     extends:
@@ -24,8 +26,7 @@ services:
       resources:
         limits:
           memory: 700m
-    environment:
-      SPRING_PROFILES_ACTIVE: default
+
 
   microservice-configserver-config:
     extends:
@@ -33,3 +34,10 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: default
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+      TZ: UTC
+
+  microservice-eureka-config:
+    extends:
+      service: microservice-configserver-config
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/

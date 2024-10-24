@@ -218,6 +218,9 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
         VotingSessionDtoWithId votingSessionDtoWithId=VotingSessionMapper.mapToVotingSessionWithId(retrievedVotingSession,new VotingSessionDtoWithId());
         votingSessionDtoWithId.setVotingSessionDto(VotingSessionMapper.mapToVotingSessionDto(retrievedVotingSession,new VotingSessionDto()));
 
+        logger.warn("System time zone: " + java.time.ZoneId.systemDefault());
+
+
         return votingSessionDtoWithId;
     }
 
