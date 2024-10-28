@@ -69,6 +69,10 @@ logging:
         data:
           mongodb: DEBUG  # Logs MongoDB queries and operations
           database: INFO  # Change 'votingdb' to a valid log level like 'INFO'
+    com:
+      yahia:
+        votingms: DEBUG
+
 
 voting-ms:
   message: "Welcome to Vote service related local APIs"

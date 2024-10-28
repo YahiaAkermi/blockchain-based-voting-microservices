@@ -11,7 +11,7 @@ services:
       service: microservice-db-config
 
   configserver:
-    image: "akermiyahia/configserver:v3"
+    image: "akermiyahia/configserver:v4"
     container_name: configserver-voting-app
     ports:
       - "8071:8071"
@@ -27,7 +27,7 @@ services:
 
 
   eurekaserver:
-    image: "akermiyahia/eurekaserver:v3"
+    image: "akermiyahia/eurekaserver:v4"
     container_name: eurekaserver-voting-app
     ports:
       - "8070:8070"
@@ -47,10 +47,16 @@ services:
       service: microservice-configserver-config
 
   voting-managment:
-    image: "akermiyahia/vm-ms:v3"
+    image: "akermiyahia/vm-ms:v4"
     container_name: vm-ms
     ports:
       - "8080:8080"
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       voting-managmentdb:
         condition: service_healthy
@@ -63,16 +69,21 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://voting-managmentdb:3306/votingmanagmentdb"
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-
     extends:
       file :  common-config.yml
       service: microservice-eureka-config
 
   voting:
-    image: "akermiyahia/voting-ms:v3"
+    image: "akermiyahia/voting-ms:v4"
     container_name: voting-ms
     ports:
       - "8081:8081"
+    healthcheck:
+      test: "curl --fail --silent localhost:8081/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       configserver:
         condition: service_healthy
@@ -80,8 +91,22 @@ services:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "voting-ms"
+    extends:
+      file :  common-config.yml
+      service: microservice-eureka-config
 
-
+  gatewayserver:
+    image: "akermiyahia/gatewayserver:v4"
+    container_name: gatewayserver-ms
+    ports:
+      - "8072:8072"
+    depends_on:
+      voting-managment:
+        condition: service_healthy
+      voting:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "gatewayserver"
     extends:
       file: common-config.yml
       service: microservice-eureka-config
