@@ -28,7 +28,9 @@ public class GatewayserverApplication {
                         .uri("lb://VM-MS"))
                 .route(p ->p.path("/yahiaorg/voting-ms/**")
                         .filters(f -> f.rewritePath("/yahiaorg/voting-ms/(?<segment>.*)","/${segment}").
-                                addResponseHeader("X-Response-Time", ZonedDateTime.now(ZoneId.of("UTC")).format(DateTimeFormatter.RFC_1123_DATE_TIME)))
+                                addResponseHeader("X-Response-Time", ZonedDateTime.now(ZoneId.of("UTC")).format(DateTimeFormatter.RFC_1123_DATE_TIME))
+                                .circuitBreaker(config -> config.setName("VotingMsCircuitBreaker")
+                                                      .setFallbackUri("forward:/contactSupport")))
                         .uri("lb://VOTING-MS")).build();
 
     }

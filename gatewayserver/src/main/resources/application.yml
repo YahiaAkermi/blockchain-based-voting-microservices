@@ -1,4 +1,16 @@
 spring:
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: f7dc81ac5e590b
+    password: 5b615c8d73cdeb
+    properties:
+      mail:
+       smtp:
+        auth: true
+        starttls:
+          enable: true
+
   application:
     name: "gatewayserver"
   config:
@@ -33,3 +45,24 @@ logging:
     com:
       yahia:
         gatewayserver: DEBUG
+
+resilience4j.circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 10
+        permitted-number-of-calls-in-half-open-state: 2
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10000
+
+
+#-----------------mail properties
+
+
+
+
+  #spring.mail.host=smtp.gmail.com
+  #spring.mail.port=587
+  #spring.mail.username=your-email@gmail.com
+  #spring.mail.password=your-email-password
+  #spring.mail.properties.mail.smtp.auth=true
+  #spring.mail.properties.mail.smtp.starttls.enable=true
