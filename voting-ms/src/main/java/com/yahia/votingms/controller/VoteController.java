@@ -10,7 +10,9 @@ import com.yahia.votingms.service.IVoteService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import org.apache.coyote.Response;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -18,13 +20,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping(path = "/vote") @AllArgsConstructor
 @Validated
 public class VoteController {
+
+    private static final Logger logger = LoggerFactory.getLogger(VoteController.class) ;
 
     private final IVoteService iVoteService;
 
@@ -32,9 +35,12 @@ public class VoteController {
     private VoteContactInfoDto voteContactInfoDto;
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createVote(@Valid @RequestBody VoteDto voteDto){
+    public ResponseEntity<ResponseDto> createVote(@RequestHeader("yahiaORG-correlation-id") String correlationId
+            ,@Valid @RequestBody VoteDto voteDto){
 
-        iVoteService.createVote(voteDto);
+        iVoteService.createVote(voteDto,correlationId);
+
+        logger.debug("yahiaORG correlation id found: {}" ,correlationId);   //here it is
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new ResponseDto(VoteConstants.STATUS_201,VoteConstants.MESSAGE_201));

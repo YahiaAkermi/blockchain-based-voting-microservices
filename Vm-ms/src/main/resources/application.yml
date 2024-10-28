@@ -9,13 +9,14 @@ spring:
     password: root
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
 
   config:
     import: "optional:configserver:http://localhost:8071/"
   profiles:
     active: "prod"
+
 
 #---------------- eureka properties
 eureka:
@@ -65,5 +66,9 @@ voting-managment:
   onCallSupport:
     - (213) 540-752-251
     - (213) 661-161-378
-
+logging:
+  level:
+    com:
+      yahia:
+        vmms: DEBUG
 

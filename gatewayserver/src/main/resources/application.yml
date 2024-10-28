@@ -28,3 +28,8 @@ info:
     name: "gatewayserver"
     description: "Voting App Gateway Server application"
     version: "1.0.0"
+logging:
+  level:
+    com:
+      yahia:
+        gatewayserver: DEBUG

@@ -41,14 +41,16 @@ public class VoteServiceImpl implements IVoteService {
      * @param voteDto -  VoteDto  object
      */
     @Override
-    public void createVote(VoteDto voteDto) {
+    public void createVote(VoteDto voteDto, String correlationId) {
 
         // 0. Fetch voting session details
-        VotingSessionDtoWithId votingSessionDtoWithId = vmMsFeignClient.fetchVotingSession(voteDto.getVotingSessionId()).getBody();
+        VotingSessionDtoWithId votingSessionDtoWithId = vmMsFeignClient.fetchVotingSession(correlationId, voteDto.getVotingSessionId()).getBody();
 
-        // Assuming votingSessionEndDate is in UTC+2, convert it to UTC (adjust the ZoneId if necessary)
+        // Assuming votingSessionEndDate is in a specific timezone, e.g., Europe/Paris
+        // Convert this timezone to UTC
+        ZoneId sessionTimeZone = ZoneId.of("Europe/Paris"); // Replace with the appropriate timezone for your use case
         ZonedDateTime votingSessionEndDate = votingSessionDtoWithId.getVotingSessionDto()
-                .getEndDate().atZone(ZoneId.of("UTC+2")).withZoneSameInstant(ZoneId.of("UTC"));
+                .getEndDate().atZone(sessionTimeZone).withZoneSameInstant(ZoneId.of("UTC"));
 
         // Log the converted voting session end date in UTC
         logger.warn("Voting session end date (converted to UTC): " + votingSessionEndDate);

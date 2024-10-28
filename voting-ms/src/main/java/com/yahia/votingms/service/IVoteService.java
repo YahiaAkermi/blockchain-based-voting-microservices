@@ -12,9 +12,10 @@ public interface IVoteService {
     /**
      *this method will create vote for a particular voter
      *@param voteDto -  VoteDto  object
+     *@param correlationId -  String
      */
 
-    void createVote(VoteDto voteDto);
+    void createVote(VoteDto voteDto,String correlationId);
 
     /**
      *this method will retrieve all votes for particular session by pagination

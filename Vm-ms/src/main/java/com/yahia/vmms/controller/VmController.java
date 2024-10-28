@@ -14,6 +14,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,8 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Validated
 public class VmController {
+
+    private static final Logger logger = LoggerFactory.getLogger(VmController.class);
 
     private IVotingSessionService iVotingSessionService;
 
@@ -93,10 +97,13 @@ public class VmController {
 
     @GetMapping("/fetch-by-id")
     public ResponseEntity< VotingSessionDtoWithId> fetchById(
-            @NotNull(message = "votingSessionId should not be null") @RequestParam Long votingSessionId){
+            @RequestHeader("yahiaORG-correlation-id") String correlationId
+            ,@NotNull(message = "votingSessionId should not be null") @RequestParam Long votingSessionId){
 
 
         VotingSessionDtoWithId votingSessionDtoWithId=iVotingSessionService.fetchVotingSessionById(votingSessionId);
+
+        logger.debug("yahiaORG correlation id found: {}" ,correlationId);
 
         return ResponseEntity.status(HttpStatus.OK).body(votingSessionDtoWithId);
     }
