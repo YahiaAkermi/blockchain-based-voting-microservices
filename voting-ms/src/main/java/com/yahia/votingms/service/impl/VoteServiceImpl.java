@@ -11,6 +11,9 @@ import com.yahia.votingms.repository.VoteRepository;
 import com.yahia.votingms.service.IVoteService;
 import com.yahia.votingms.exception.VoteAlreadyCastedException;
 import com.yahia.votingms.service.client.VmMsFeignClient;
+import com.yahia.votingms.service.client.vsDetailsCache.CacheMapper;
+import com.yahia.votingms.service.client.vsDetailsCache.VsDetails;
+import com.yahia.votingms.service.client.vsDetailsCache.VsDetailsRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +34,8 @@ public class VoteServiceImpl implements IVoteService {
 
     private final VoteRepository voteRepository;
     private final VmMsFeignClient vmMsFeignClient;
+    private final VsDetailsRepository vsDetailsRepository;
+
 
     private static final Logger logger = LoggerFactory.getLogger(VoteServiceImpl.class);
 
@@ -45,6 +50,16 @@ public class VoteServiceImpl implements IVoteService {
 
         // 0. Fetch voting session details
         VotingSessionDtoWithId votingSessionDtoWithId = vmMsFeignClient.fetchVotingSession(correlationId, voteDto.getVotingSessionId()).getBody();
+
+        //checking first if the data exists in the cache
+        Boolean vsDetailExist= vsDetailsRepository.existsByVotingSessionId(votingSessionDtoWithId.getVotingSessionId());
+
+        if (!vsDetailExist){
+
+            VsDetails newVsDetails= CacheMapper.mapToVsDetails(votingSessionDtoWithId,new VsDetails());
+
+            vsDetailsRepository.save(newVsDetails);
+        }
 
         // Assuming votingSessionEndDate is in a specific timezone, e.g., Europe/Paris
         // Convert this timezone to UTC

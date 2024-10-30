@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("vm-ms")
+@FeignClient(value = "vm-ms",fallback = VmMsFallback.class)
 public interface VmMsFeignClient {
 
     @GetMapping(value = "/voting-managment/fetch-by-id",consumes = "application/json")

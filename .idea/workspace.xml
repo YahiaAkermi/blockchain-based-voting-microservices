@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e13402f-56c4-4811-b190-4fe11ae4b426" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/controller/FallbackController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/service/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFallback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/CacheMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/VsDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/VsDetailsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/VsDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatewayserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/GatewayserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/GatewayserverApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/controller/FallbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/controller/FallbackController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +74,7 @@
     &quot;Spring Boot.GatewayserverApplication.executor&quot;: &quot;Debug&quot;,
     &quot;Spring Boot.VmMsApplication.executor&quot;: &quot;Debug&quot;,
     &quot;Spring Boot.VotingMsApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;trialls&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -146,6 +153,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ConfigserverApplication" />
+      <item itemvalue="Spring Boot.EurekaserverApplication" />
+      <item itemvalue="Spring Boot.GatewayserverApplication" />
+      <item itemvalue="Spring Boot.VmMsApplication" />
+      <item itemvalue="Spring Boot.VotingMsApplication" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -180,21 +194,23 @@
       <workItem from="1730033561027" duration="8394000" />
       <workItem from="1730061059575" duration="2159000" />
       <workItem from="1730106342950" duration="13098000" />
+      <workItem from="1730212871234" duration="9276000" />
+      <workItem from="1730272613823" duration="3136000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/controller/VoteController.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
