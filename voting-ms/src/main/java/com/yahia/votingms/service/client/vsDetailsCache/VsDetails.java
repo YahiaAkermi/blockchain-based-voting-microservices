@@ -22,4 +22,6 @@ public class VsDetails implements Serializable {
 
 
     private VotingStatus votingStatus;
+
+    private String listCondidates;
 }

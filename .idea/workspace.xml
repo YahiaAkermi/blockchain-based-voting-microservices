@@ -5,19 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e13402f-56c4-4811-b190-4fe11ae4b426" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/CacheMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/VsDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/VsDetailsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/VsDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/dto/VotingSessionDtoWithIdAndCondidates.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/controller/FallbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/controller/FallbackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/VmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/controller/VmController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/mapper/VotingSessionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/mapper/VotingSessionMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/repository/SessionApplicationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/repository/SessionApplicationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/IVotingSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/IVotingSessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/VotingSessionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vm-ms/src/main/java/com/yahia/vmms/service/impl/VotingSessionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/GatewayserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/GatewayserverApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/VotingMsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFallback.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/CacheMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/CacheMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/VsDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/vsDetailsCache/VsDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/impl/VoteServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +197,9 @@
       <workItem from="1730106342950" duration="13098000" />
       <workItem from="1730212871234" duration="9276000" />
       <workItem from="1730272613823" duration="3136000" />
+      <workItem from="1730290991620" duration="6888000" />
+      <workItem from="1730298015444" duration="261000" />
+      <workItem from="1730367140389" duration="6006000" />
     </task>
     <servers />
   </component>

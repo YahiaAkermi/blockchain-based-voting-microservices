@@ -2,6 +2,7 @@ package com.yahia.vmms.mapper;
 
 import com.yahia.vmms.dto.VotingSessionDto;
 import com.yahia.vmms.dto.VotingSessionDtoWithId;
+import com.yahia.vmms.dto.VotingSessionDtoWithIdAndCondidates;
 import com.yahia.vmms.entity.VotingSessions;
 import com.yahia.vmms.entity.enums.Visibility;
 
@@ -61,6 +62,16 @@ public class VotingSessionMapper {
 
         return votingSession;
 
+    }
+
+    public static VotingSessionDtoWithIdAndCondidates mapToVotingSessionDtoWithIdAndCondidates(VotingSessions votingSessions,VotingSessionDtoWithIdAndCondidates votingSessionDtoWithIdAndCondidates){
+
+        votingSessionDtoWithIdAndCondidates.setVotingSessionId(votingSessions.getVsId());
+        votingSessionDtoWithIdAndCondidates.setVotingStatus(votingSessions.getVotingStatus());
+        votingSessionDtoWithIdAndCondidates.setStartDate(votingSessions.getStartDate());
+        votingSessionDtoWithIdAndCondidates.setEndDate(votingSessions.getEndDate());
+
+        return votingSessionDtoWithIdAndCondidates;
     }
 
 
