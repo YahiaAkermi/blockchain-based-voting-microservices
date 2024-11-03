@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e13402f-56c4-4811-b190-4fe11ae4b426" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/GatewayserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/yahia/gatewayserver/GatewayserverApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/voting-ms/src/main/java/com/yahia/votingms/service/client/VmMsFallback.java" afterDir="false" />
-    </list>
+    <list default="true" id="5e13402f-56c4-4811-b190-4fe11ae4b426" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +186,7 @@
       <workItem from="1730298015444" duration="261000" />
       <workItem from="1730367140389" duration="6302000" />
       <workItem from="1730614234916" duration="594000" />
-      <workItem from="1730617950413" duration="5590000" />
+      <workItem from="1730617950413" duration="5918000" />
     </task>
     <servers />
   </component>
