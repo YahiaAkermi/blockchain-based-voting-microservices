@@ -37,6 +37,10 @@ public class VmMsFallback implements VmMsFeignClient{
 
         VotingSessionDtoWithIdAndCondidates votingSessionDtoWithIdAndCondidates= CacheMapper.mapToVotingSessionDtoWithIdAndCondidates(retrievedVsDetails,new VotingSessionDtoWithIdAndCondidates());
 
+        if(retrievedVsDetails.getListCondidates() == null){
+            throw new ResourceNotFoundException(String.format("either the voting session detail for session with id: %s hasn't been cached or the voting session has not candidates yet",votingSessionId));
+        }
+
         // I need to transform the String to arrayList
         ArrayList<Long> listCondidates= Arrays.stream(retrievedVsDetails.getListCondidates().split(","))
                                      .map(item ->Long.parseLong(item)).collect(Collectors.toCollection(ArrayList::new));
