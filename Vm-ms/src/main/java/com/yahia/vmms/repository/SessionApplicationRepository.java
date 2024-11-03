@@ -3,6 +3,7 @@ package com.yahia.vmms.repository;
 import com.yahia.vmms.entity.Condidate;
 import com.yahia.vmms.entity.SessionApplication;
 import com.yahia.vmms.entity.compositeIDs.ApplicationID;
+import com.yahia.vmms.entity.enums.ApplicationStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 public interface SessionApplicationRepository extends JpaRepository<SessionApplication, ApplicationID> {
 
+    Collection<SessionApplication> findSessionApplicationsByApplicationID_VotingSessionIdAndAndApplicationStatus(Long votingSessionId, ApplicationStatus applicationStatus);
 
     boolean existsByApplicationID(ApplicationID applicationID);
 

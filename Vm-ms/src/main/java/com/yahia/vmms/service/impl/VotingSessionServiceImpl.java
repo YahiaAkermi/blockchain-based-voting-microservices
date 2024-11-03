@@ -3,7 +3,10 @@ package com.yahia.vmms.service.impl;
 import com.yahia.vmms.dto.VotingSessionDto;
 
 import com.yahia.vmms.dto.VotingSessionDtoWithId;
+import com.yahia.vmms.dto.VotingSessionDtoWithIdAndCondidates;
+import com.yahia.vmms.entity.SessionApplication;
 import com.yahia.vmms.entity.VotingSessions;
+import com.yahia.vmms.entity.enums.ApplicationStatus;
 import com.yahia.vmms.entity.enums.Visibility;
 import com.yahia.vmms.entity.enums.VotingStatus;
 import com.yahia.vmms.exception.DateTimeIncohrentException;
@@ -222,6 +225,38 @@ public class VotingSessionServiceImpl implements IVotingSessionService {
 
 
         return votingSessionDtoWithId;
+    }
+
+    /**
+     * this method will retrieve a particular voting session but is used by feignClient
+     *
+     * @param votingSessionId -  Long
+     */
+    @Override
+    public VotingSessionDtoWithIdAndCondidates fetchVotingSessionById2(Long votingSessionId) {
+
+        //we're retrieving the voting session if it doesn't exist we return resource not found exception
+        VotingSessions retrievedVotingSession= votingSessionsRepository.findById(votingSessionId)
+                .orElseThrow(() -> new RessourceNotFoundException("Voting Session", "voting session ID", votingSessionId.toString()));
+
+
+        //getting the candidates of the voting session
+        Collection<SessionApplication> listSessionApplications=sessionApplicationRepository.findSessionApplicationsByApplicationID_VotingSessionIdAndAndApplicationStatus(votingSessionId,ApplicationStatus.APPROUVED);
+
+        //storing only condidateId in arrayList
+        ArrayList<Long> votingSessionCondidates=listSessionApplications.stream()
+                                                    .map(app->app.getApplicationID().getCondidateId()).collect(Collectors.toCollection(ArrayList::new));
+
+        //transforming it to dto with id
+      VotingSessionDtoWithIdAndCondidates votingSessionDtoWithIdAndCondidates=VotingSessionMapper
+                                                                    .mapToVotingSessionDtoWithIdAndCondidates(retrievedVotingSession,new VotingSessionDtoWithIdAndCondidates());
+      //setting the condidates list
+      votingSessionDtoWithIdAndCondidates.setListCondidates(votingSessionCondidates);
+
+        logger.warn("System time zone: " + java.time.ZoneId.systemDefault());
+
+
+        return votingSessionDtoWithIdAndCondidates;
     }
 
     /**

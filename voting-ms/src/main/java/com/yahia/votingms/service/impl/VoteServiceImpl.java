@@ -3,6 +3,7 @@ package com.yahia.votingms.service.impl;
 import com.yahia.votingms.dto.VoteDto;
 import com.yahia.votingms.dto.VoteDtoWithId;
 import com.yahia.votingms.dto.clientDtos.VotingSessionDtoWithId;
+import com.yahia.votingms.dto.clientDtos.VotingSessionDtoWithIdAndCondidates;
 import com.yahia.votingms.entity.Vote;
 import com.yahia.votingms.exception.CastedVoteRejectedException;
 import com.yahia.votingms.exception.ResourceNotFoundException;
@@ -11,9 +12,13 @@ import com.yahia.votingms.repository.VoteRepository;
 import com.yahia.votingms.service.IVoteService;
 import com.yahia.votingms.exception.VoteAlreadyCastedException;
 import com.yahia.votingms.service.client.VmMsFeignClient;
+import com.yahia.votingms.service.client.vsDetailsCache.CacheMapper;
+import com.yahia.votingms.service.client.vsDetailsCache.VsDetails;
+import com.yahia.votingms.service.client.vsDetailsCache.VsDetailsRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,11 +31,19 @@ import java.time.chrono.ChronoLocalDateTime;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class VoteServiceImpl implements IVoteService {
 
     private final VoteRepository voteRepository;
+
     private final VmMsFeignClient vmMsFeignClient;
+    private final VsDetailsRepository vsDetailsRepository;
+
+    public VoteServiceImpl(VoteRepository voteRepository, @Qualifier("com.yahia.votingms.service.client.VmMsFeignClient") VmMsFeignClient vmMsFeignClient, VsDetailsRepository vsDetailsRepository){
+        this.voteRepository=voteRepository;
+        this.vmMsFeignClient=vmMsFeignClient;
+        this.vsDetailsRepository=vsDetailsRepository;
+    }
+
 
     private static final Logger logger = LoggerFactory.getLogger(VoteServiceImpl.class);
 
@@ -44,13 +57,28 @@ public class VoteServiceImpl implements IVoteService {
     public void createVote(VoteDto voteDto, String correlationId) {
 
         // 0. Fetch voting session details
-        VotingSessionDtoWithId votingSessionDtoWithId = vmMsFeignClient.fetchVotingSession(correlationId, voteDto.getVotingSessionId()).getBody();
+        VotingSessionDtoWithIdAndCondidates votingSessionDtoWithIdAndCondidates = vmMsFeignClient.fetchVotingSession(correlationId, voteDto.getVotingSessionId()).getBody();
+
+        //checking first if the data exists in the cache
+        Boolean vsDetailExist= vsDetailsRepository.existsByVotingSessionId(votingSessionDtoWithIdAndCondidates.getVotingSessionId());
+
+        //check if the candidate exists in the voting session otherwise you cannot vote on someone is not a candidate
+        if(!votingSessionDtoWithIdAndCondidates.getListCondidates().contains(voteDto.getCondidateId())){
+            throw new ResourceNotFoundException(String.format("the candidate { id : %s } you're voting for does not exist",voteDto.getCondidateId()));
+        }
+
+
+        if (!vsDetailExist){
+
+            VsDetails newVsDetails= CacheMapper.mapToVsDetails(votingSessionDtoWithIdAndCondidates,new VsDetails());
+
+            vsDetailsRepository.save(newVsDetails);
+        }
 
         // Assuming votingSessionEndDate is in a specific timezone, e.g., Europe/Paris
         // Convert this timezone to UTC
         ZoneId sessionTimeZone = ZoneId.of("Europe/Paris"); // Replace with the appropriate timezone for your use case
-        ZonedDateTime votingSessionEndDate = votingSessionDtoWithId.getVotingSessionDto()
-                .getEndDate().atZone(sessionTimeZone).withZoneSameInstant(ZoneId.of("UTC"));
+        ZonedDateTime votingSessionEndDate = votingSessionDtoWithIdAndCondidates.getEndDate().atZone(sessionTimeZone).withZoneSameInstant(ZoneId.of("UTC"));
 
         // Log the converted voting session end date in UTC
         logger.warn("Voting session end date (converted to UTC): " + votingSessionEndDate);

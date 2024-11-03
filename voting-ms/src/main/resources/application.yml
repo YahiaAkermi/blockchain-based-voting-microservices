@@ -7,10 +7,33 @@ spring:
     mongodb:
       uri: mongodb+srv://yaakermi:uMOhzWo3hutWNHMW@voting-sys.a2zkg.mongodb.net/?retryWrites=true&w=majority&appName=voting-sys
       database: votingdb
+    redis:
+      username: default
+      password: qzNiiKtcUbRwTKTLtF31bkxNOXuVkPxc
+      host: redis-14325.c339.eu-west-3-1.ec2.redns.redis-cloud.com
+      port: 14325
+
+
   config:
     import: "optional:configserver:http://localhost:8071/"
   profiles:
     active: "prod"
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+      httpclient:
+        connection-timeout: 10000
+  cache:
+    redis:
+      time-to-live: 60000
+    type: redis
+
+
+
+#---------------------------- circuit breaker begin
+#---------------------------- circuit breaker end
+
 
 #---------------- eureka properties
 eureka:
@@ -82,3 +105,12 @@ voting-ms:
   onCallSupport:
     - (213) 540-752-251
     - (213) 661-161-378
+
+resilience4j.circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 10
+        permitted-number-of-calls-in-half-open-state: 2
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10000
+

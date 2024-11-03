@@ -4,6 +4,7 @@ package com.yahia.vmms.controller;
 import com.yahia.vmms.constants.VotingSessionConstants;
 import com.yahia.vmms.dto.VotingSessionDto;
 import com.yahia.vmms.dto.VotingSessionDtoWithId;
+import com.yahia.vmms.dto.VotingSessionDtoWithIdAndCondidates;
 import com.yahia.vmms.dto.configRecord.VmContactInfoDto;
 import com.yahia.vmms.dto.responseStructureDTOs.ResponseDto;
 import com.yahia.vmms.entity.enums.Visibility;
@@ -106,6 +107,19 @@ public class VmController {
         logger.debug("yahiaORG correlation id found: {}" ,correlationId);
 
         return ResponseEntity.status(HttpStatus.OK).body(votingSessionDtoWithId);
+    }
+
+    @GetMapping("/fetch-by-id2")
+    public ResponseEntity<VotingSessionDtoWithIdAndCondidates> fetchById2(
+            @RequestHeader("yahiaORG-correlation-id") String correlationId
+            ,@NotNull(message = "votingSessionId should not be null") @RequestParam Long votingSessionId){
+
+
+        VotingSessionDtoWithIdAndCondidates votingSessionDtoWithIdAndCondidates=iVotingSessionService.fetchVotingSessionById2(votingSessionId);
+
+        logger.debug("yahiaORG correlation id found: {}" ,correlationId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(votingSessionDtoWithIdAndCondidates);
     }
 
     @PutMapping("/update")

@@ -2,6 +2,7 @@ package com.yahia.vmms.service;
 
 import com.yahia.vmms.dto.VotingSessionDto;
 import com.yahia.vmms.dto.VotingSessionDtoWithId;
+import com.yahia.vmms.dto.VotingSessionDtoWithIdAndCondidates;
 import com.yahia.vmms.entity.VotingSessions;
 import com.yahia.vmms.entity.enums.Visibility;
 import com.yahia.vmms.entity.enums.VotingStatus;
@@ -42,6 +43,12 @@ public interface IVotingSessionService {
      * @param votingSessionId -  Long
      */
     VotingSessionDtoWithId fetchVotingSessionById(Long votingSessionId);
+
+    /**
+     *this method will retrieve a particular voting session but is used by feignClient
+     * @param votingSessionId -  Long
+     */
+    VotingSessionDtoWithIdAndCondidates fetchVotingSessionById2(Long votingSessionId);
 
     /**
      *this method will update particular Voting session

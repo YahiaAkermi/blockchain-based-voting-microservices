@@ -23,7 +23,7 @@ public class FallbackController {
         // Send email
         emailService.sendSupportEmail(to, subject, text);
 
-        return Mono.just("An error has occured, please try after sometime or contact support team !!");
+        return Mono.just("An error has occured, please try after sometime or contact support team (GatewayServer) !!");
     }
 
 }
