@@ -146,6 +146,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ConfigserverApplication" />
+      <item itemvalue="Spring Boot.EurekaserverApplication" />
+      <item itemvalue="Spring Boot.GatewayserverApplication" />
+      <item itemvalue="Spring Boot.VmMsApplication" />
+      <item itemvalue="Spring Boot.VotingMsApplication" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
