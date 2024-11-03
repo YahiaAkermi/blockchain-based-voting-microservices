@@ -33,6 +33,11 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
@@ -98,7 +103,7 @@
                 <version>3.4.1</version>
                 <configuration>
                     <to>
-                        <image>akermiyahia/${project.artifactId}:v4</image>
+                        <image>akermiyahia/${project.artifactId}:v5</image>
                     </to>
                 </configuration>
             </plugin>

@@ -1,5 +1,17 @@
 services:
 
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: ["CMD-SHELL","redis-cli ping | grep PONG"]
+      timeout: 10s
+      retries: 10
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
   voting-managmentdb:
     container_name: voting-managmentDB
     ports:
@@ -11,7 +23,7 @@ services:
       service: microservice-db-config
 
   configserver:
-    image: "akermiyahia/configserver:v4"
+    image: "akermiyahia/configserver:v5"
     container_name: configserver-voting-app
     ports:
       - "8071:8071"
@@ -27,7 +39,7 @@ services:
 
 
   eurekaserver:
-    image: "akermiyahia/eurekaserver:v4"
+    image: "akermiyahia/eurekaserver:v5"
     container_name: eurekaserver-voting-app
     ports:
       - "8070:8070"
@@ -47,7 +59,7 @@ services:
       service: microservice-configserver-config
 
   voting-managment:
-    image: "akermiyahia/vm-ms:v4"
+    image: "akermiyahia/vm-ms:v5"
     container_name: vm-ms
     ports:
       - "8080:8080"
@@ -74,7 +86,7 @@ services:
       service: microservice-eureka-config
 
   voting:
-    image: "akermiyahia/voting-ms:v4"
+    image: "akermiyahia/voting-ms:v5"
     container_name: voting-ms
     ports:
       - "8081:8081"
@@ -96,7 +108,7 @@ services:
       service: microservice-eureka-config
 
   gatewayserver:
-    image: "akermiyahia/gatewayserver:v4"
+    image: "akermiyahia/gatewayserver:v5"
     container_name: gatewayserver-ms
     ports:
       - "8072:8072"
@@ -105,8 +117,15 @@ services:
         condition: service_healthy
       voting:
         condition: service_healthy
+      redis:
+        condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "gatewayserver"
+      SPRING_DATA_REDIS_CONNECT-TIMEOUT: 2s
+      SPRING_DATA_REDIS_TIMEOUT: 1s
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+
     extends:
       file: common-config.yml
       service: microservice-eureka-config
