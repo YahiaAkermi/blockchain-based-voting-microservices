@@ -24,12 +24,6 @@ spring:
         locator:
           enabled: false
           lower-case-service-id: true
-  data:
-    redis:
-      port: 6379
-      host: localhost
-      connect-timeout: 2s
-      timeout: 1s
 
 
 management:
@@ -43,6 +37,9 @@ management:
   info:
     env:
       enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
 info:
   app:

@@ -42,8 +42,7 @@ public class GatewayserverApplication {
                                 addResponseHeader("X-Response-Time", ZonedDateTime.now(ZoneId.of("UTC")).format(DateTimeFormatter.RFC_1123_DATE_TIME))
                                 .circuitBreaker(config -> config.setName("VotingMsCircuitBreaker")
                                                       .setFallbackUri("forward:/contactSupport"))
-                                .requestRateLimiter(config -> config.setRateLimiter(redisRateLimiter())
-                                                                    .setKeyResolver(userKeyResolver()))
+
                         )
                         .uri("lb://VOTING-MS")).build();
 
@@ -55,16 +54,9 @@ public class GatewayserverApplication {
                 .timeLimiterConfig(TimeLimiterConfig.custom().timeoutDuration(Duration.ofSeconds(8)).build()).build());
     }
 
-    @Bean
-    KeyResolver userKeyResolver(){
-        return exchange -> Mono.justOrEmpty(exchange.getRequest().getHeaders().getFirst("user"))
-                .defaultIfEmpty("Anonymous");
-    }
 
-    @Bean
-    public RedisRateLimiter redisRateLimiter(){
-        return new RedisRateLimiter(1,30,30);
-    }
+
+
 
 
 }
