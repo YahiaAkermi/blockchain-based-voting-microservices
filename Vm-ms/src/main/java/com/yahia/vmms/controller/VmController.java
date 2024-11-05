@@ -114,10 +114,10 @@ public class VmController {
             @RequestHeader("yahiaORG-correlation-id") String correlationId
             ,@NotNull(message = "votingSessionId should not be null") @RequestParam Long votingSessionId){
 
-
+        logger.debug("fetchById2 method start");
         VotingSessionDtoWithIdAndCondidates votingSessionDtoWithIdAndCondidates=iVotingSessionService.fetchVotingSessionById2(votingSessionId);
+        logger.debug("fetchById2 method end");
 
-        logger.debug("yahiaORG correlation id found: {}" ,correlationId);
 
         return ResponseEntity.status(HttpStatus.OK).body(votingSessionDtoWithIdAndCondidates);
     }

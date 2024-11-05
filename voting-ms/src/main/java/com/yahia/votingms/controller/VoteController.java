@@ -38,9 +38,12 @@ public class VoteController {
     public ResponseEntity<ResponseDto> createVote(@RequestHeader("yahiaORG-correlation-id") String correlationId
             ,@Valid @RequestBody VoteDto voteDto){
 
+        logger.debug("createVote method start");
         iVoteService.createVote(voteDto,correlationId);
+        logger.debug("createVote method end");
 
-        logger.debug("yahiaORG correlation id found: {}" ,correlationId);   //here it is
+
+//        logger.debug("yahiaORG correlation id found: {}" ,correlationId);   //here it is
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new ResponseDto(VoteConstants.STATUS_201,VoteConstants.MESSAGE_201));

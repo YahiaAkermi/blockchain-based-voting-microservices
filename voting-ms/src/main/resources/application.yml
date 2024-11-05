@@ -98,7 +98,8 @@ logging:
     com:
       yahia:
         votingms: DEBUG
-
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
 
 voting-ms:
   message: "Welcome to Vote service related local APIs"
